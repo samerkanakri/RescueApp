@@ -98,6 +98,10 @@ public class NavigationMain extends AppCompatActivity
     }
 
 
+    /**
+     * customized method to display fragment layouts
+     * @param viewId
+     */
     public void displayView(int viewId) {
 
         Fragment fragment = null;
@@ -112,6 +116,11 @@ public class NavigationMain extends AppCompatActivity
                 break;
             case R.id.nav_RequestDrone:
                 fragment = new RequestDrone();
+                title = "Drone Request";
+                viewIsAtHome = false;
+                break;
+            case R.id.nav_Profile:
+                fragment = new Profile();
                 title = "Drone Request";
                 viewIsAtHome = false;
                 break;

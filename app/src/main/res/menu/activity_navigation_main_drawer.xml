@@ -5,15 +5,15 @@
         <item
             android:id="@+id/nav_callDoctor"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="Call Doctor" />
         <item
             android:id="@+id/nav_RequestDrone"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="Request Drone" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_Profile"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Profile" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"

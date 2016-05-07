@@ -11,4 +11,7 @@
         <item>+966 saudi arabia</item>
         <item>+963 syria</item>
     </string-array>
+
+    <string name="preference_username">username</string>
+    <string name="preference_password">password</string>
 </resources>
