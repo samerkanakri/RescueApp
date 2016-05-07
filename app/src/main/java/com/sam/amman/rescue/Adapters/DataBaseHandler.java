@@ -1,5 +1,6 @@
 package com.sam.amman.rescue.Adapters;
 	
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -46,13 +47,12 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	// Upgrading database
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		try {
-			db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
-			onCreate(db);
-		}catch (SQLException e){
-			Log.w(TAG, "onUpgrade: ", e);
-		}
-
+//		try {
+//			db.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+//			onCreate(db);
+//		}catch (SQLException e){
+//			Log.w(TAG, "onUpgrade: ", e);
+//		}
 	}
 
 	/**
@@ -62,10 +62,19 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	 */
 	public void addUser(User user) {
 		try {
-			SQLiteDatabase db = getWritableDatabase();
-			String SQLcode = "insert into " + TABLE_USERS + "(" + KEY_EMAIL + "," + KEY_PASSWORD + ") values ('" + user.getEmail() + "'," + user.getPassword() + ")";
-			db.execSQL(SQLcode);
-			db.close();
+//			SQLiteDatabase db = getWritableDatabase();
+//			String SQLcode = "insert into " + TABLE_USERS + "(" + KEY_EMAIL + "," + KEY_PASSWORD + ") values ('" + user.getEmail() + "'," + user.getPassword() + ")";
+//			db.execSQL(SQLcode);
+//			db.close();
+
+			SQLiteDatabase usersDb = getWritableDatabase();
+
+			ContentValues values = new ContentValues();
+			values.put("name", user.getEmail());
+			values.put("major", user.getPassword());
+
+			usersDb.insert("studentTable", null, values);
+
 		}catch (SQLException e){
 			Log.w(TAG, "addUser: ",e );
 		}

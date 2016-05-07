@@ -49,7 +49,7 @@ public class LoginActivity extends Activity {
             String defaultValue = "";
             String usernamePref = sharedPrefGet.getString(getString(R.string.preference_username), defaultValue);
 
-            usernameTxt.setText(usernamePref);
+            //usernameTxt.setText(usernamePref);
         }
 
         /**
