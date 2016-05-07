@@ -6,23 +6,20 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Actors.User;
-import com.sam.amman.rescue.Adapters.DataBaseHandler;
+import com.sam.amman.rescue.Adapters.DBHandler;
+import com.sam.amman.rescue.Adapters.UserDBHandler;
 import com.sam.amman.rescue.Normal.NavigationMain;
-
-import java.util.List;
 
 public class LoginActivity extends Activity {
 
 
-    DataBaseHandler db;
+    DBHandler db;
     Boolean rememberme = false;
     EditText usernameTxt,passwordTxt;
     CheckBox remembermeChkBx;
@@ -77,7 +74,7 @@ public class LoginActivity extends Activity {
         ((Button)findViewById(R.id.BtnLogin)).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                DataBaseHandler db = new DataBaseHandler(getApplication());
+                UserDBHandler db = new UserDBHandler(getApplication());
 
                 if (db.IsUser(usernameTxt.getText().toString(),passwordTxt.getText().toString())) {
 

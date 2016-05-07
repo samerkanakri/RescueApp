@@ -11,12 +11,13 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Adapters.DataBaseHandler;
+import com.sam.amman.rescue.Adapters.DBHandler;
+import com.sam.amman.rescue.Adapters.UserDBHandler;
 
 public class RegActivity extends AppCompatActivity {
 
 
-    DataBaseHandler db;
+    UserDBHandler db;
     Spinner spinner;
     Button reg;
     EditText emailEdt,passwordEdt;
@@ -30,7 +31,7 @@ public class RegActivity extends AppCompatActivity {
         emailEdt = (EditText) findViewById(R.id.email);
         passwordEdt = (EditText) findViewById(R.id.password);
         reg = (Button) findViewById(R.id.BtnReg);
-        db = new DataBaseHandler(this);
+        db = new UserDBHandler(this);
 
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +43,7 @@ public class RegActivity extends AppCompatActivity {
                     Log.w("Registration ", "onClick: ",null );
                 }else{
                     try {
-                        db = new DataBaseHandler(getApplication());
+                        db = new UserDBHandler(getApplication());
 //                        User user = new User();
 //                        user.setEmail(usernameEdt.getText().toString());
 //                        user.setPassword(password.getText().toString());

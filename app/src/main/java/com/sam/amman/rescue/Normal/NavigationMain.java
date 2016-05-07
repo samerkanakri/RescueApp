@@ -121,7 +121,12 @@ public class NavigationMain extends AppCompatActivity
                 break;
             case R.id.nav_Profile:
                 fragment = new Profile();
-                title = "Drone Request";
+                title = "Profile";
+                viewIsAtHome = false;
+                break;
+            case R.id.nav_EDoctor:
+                fragment = new EDoctor();
+                title = "E-Doctor";
                 viewIsAtHome = false;
                 break;
 
