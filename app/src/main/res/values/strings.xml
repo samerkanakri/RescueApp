@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Rescue</string>
+    <string name="title_activity_avigation_main">avigationMain</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string-array name="country_codes">
+        <item>+962 jordan</item>
+        <item>+966 saudi arabia</item>
+        <item>+963 syria</item>
+    </string-array>
+</resources>

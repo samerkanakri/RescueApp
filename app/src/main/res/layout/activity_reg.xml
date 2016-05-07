@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.sam.amman.rescue.RegActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_gravity="center_horizontal" />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Sign up with google+"
+            android:id="@+id/button3"
+            android:layout_gravity="center_horizontal" />
+
+
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Sign up with facebook"
+            android:id="@+id/button4"
+            android:layout_gravity="center_horizontal" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center_horizontal" />
+
+        <EditText
+
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/Fname"
+            android:layout_gravity="center_horizontal"
+            android:hint="First Name"
+            android:singleLine="true" />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/Lname"
+            android:layout_gravity="center_horizontal"
+            android:hint="Last Name"
+            android:singleLine="true" />
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/email"
+            android:layout_gravity="center_horizontal"
+            android:hint="Email"
+            android:singleLine="true" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:id="@+id/spinnerCountryCodes"
+                android:layout_weight="1" />
+
+            <EditText
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/Pnumber"
+                android:layout_gravity="center_horizontal"
+                android:hint="Mobile Number"
+                android:phoneNumber="true"
+                android:singleLine="true" />
+        </LinearLayout>
+
+        <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/password"
+            android:layout_gravity="center_horizontal"
+            android:hint="Password"
+            android:password="true"
+            android:singleLine="true" />
+
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="90dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical|center_horizontal">
+
+
+
+            <Button
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:text="Register"
+                android:id="@+id/BtnReg"
+                android:gravity="center_vertical|center_horizontal"
+                android:textAlignment="center"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>
