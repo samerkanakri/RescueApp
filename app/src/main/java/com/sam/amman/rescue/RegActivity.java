@@ -1,22 +1,16 @@
 package com.sam.amman.rescue;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Actors.User;
 import com.sam.amman.rescue.Adapters.DataBaseHandler;
 
 public class RegActivity extends AppCompatActivity {
@@ -25,7 +19,7 @@ public class RegActivity extends AppCompatActivity {
     DataBaseHandler db;
     Spinner spinner;
     Button reg;
-    EditText username,password;
+    EditText emailEdt,passwordEdt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,8 +27,8 @@ public class RegActivity extends AppCompatActivity {
 
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        username = (EditText) findViewById(R.id.email);
-        username = (EditText) findViewById(R.id.password);
+        emailEdt = (EditText) findViewById(R.id.email);
+        passwordEdt = (EditText) findViewById(R.id.password);
         reg = (Button) findViewById(R.id.BtnReg);
         db = new DataBaseHandler(this);
 
@@ -42,18 +36,26 @@ public class RegActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //saving
-                db = new DataBaseHandler(getApplication());
-
-
-                try {
-
-                    db.addUserStr("samer","123");
-                    db.close();
-                    Toast.makeText(RegActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
-                } catch (Exception e) {
-                    Log.w(" --- ", "onClick: ",e );
-                    Toast.makeText(RegActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                String emailStr = emailEdt.getText().toString();
+                String passwordStr = passwordEdt.getText().toString();
+                if("".equals(emailStr) || "".equals(passwordStr)){
+                    Log.w("Registration ", "onClick: ",null );
+                }else{
+                    try {
+                        db = new DataBaseHandler(getApplication());
+//                        User user = new User();
+//                        user.setEmail(usernameEdt.getText().toString());
+//                        user.setPassword(password.getText().toString());
+//                        db.addUser(user);
+                        db.addUserStr(emailStr,passwordStr);
+                        db.close();
+                        Toast.makeText(RegActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
+                    } catch (Exception e) {
+                        Log.w(" --- ", "onClick: ",e );
+                        Toast.makeText(RegActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+                    }
                 }
+
             }
         });
 

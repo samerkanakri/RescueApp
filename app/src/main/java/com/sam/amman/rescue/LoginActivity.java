@@ -78,10 +78,6 @@ public class LoginActivity extends Activity {
             @Override
             public void onClick(View view) {
                 DataBaseHandler db = new DataBaseHandler(getApplication());
-//                    User u = new User();
-//                    u = db.getUser(1);
-//                    usernameTxt.setText(u.getEmail());
-//                    passwordTxt.setText(u.getPassword());
 
                 if (db.IsUser(usernameTxt.getText().toString(),passwordTxt.getText().toString())) {
 

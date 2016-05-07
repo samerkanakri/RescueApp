@@ -1,36 +1,53 @@
 package com.sam.amman.rescue.Normal;
 
+import android.content.Context;
+import android.database.SQLException;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
+import com.sam.amman.rescue.Actors.User;
+import com.sam.amman.rescue.Adapters.DataBaseHandler;
 import com.sam.amman.rescue.R;
 
 public class Profile extends Fragment {
 
+    Context context;
     View v;
     Button submit;
+    EditText emailTxt;
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.activity_profile,container,false);
 
+        emailTxt = (EditText) v.findViewById(R.id.emailEdtxt);
 
         submit = (Button) v.findViewById(R.id.BtnSubmit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 // update data base
+                try {
+                    DataBaseHandler db = new DataBaseHandler(context);
+                    User user;
+                    user = db.getUser(1);
+                    emailTxt.setText(user.getEmail());
+                }catch (SQLException e){
+                    Log.w("Profile", "onClick: ", e);
+                }
 
             }
         });
 
         return v;
     }
+
 }

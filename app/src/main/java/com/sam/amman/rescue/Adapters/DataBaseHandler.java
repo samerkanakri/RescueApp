@@ -62,19 +62,19 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	 */
 	public void addUser(User user) {
 		try {
+			SQLiteDatabase db = getWritableDatabase();
+			String SQLcode = "insert into " + TABLE_USERS + "(" + KEY_EMAIL + "," + KEY_PASSWORD + ") values ('" + user.getEmail() + "'," + user.getPassword() + ")";
+			db.execSQL(SQLcode);
+			db.close();
+
 //			SQLiteDatabase db = getWritableDatabase();
-//			String SQLcode = "insert into " + TABLE_USERS + "(" + KEY_EMAIL + "," + KEY_PASSWORD + ") values ('" + user.getEmail() + "'," + user.getPassword() + ")";
-//			db.execSQL(SQLcode);
+//
+//			ContentValues values = new ContentValues();
+//			values.put(KEY_EMAIL, user.getEmail());
+//			values.put(KEY_PASSWORD, user.getPassword());
+//
+//			db.insert(TABLE_USERS, null, values);
 //			db.close();
-
-			SQLiteDatabase usersDb = getWritableDatabase();
-
-			ContentValues values = new ContentValues();
-			values.put("name", user.getEmail());
-			values.put("major", user.getPassword());
-
-			usersDb.insert("studentTable", null, values);
-
 		}catch (SQLException e){
 			Log.w(TAG, "addUser: ",e );
 		}
@@ -126,16 +126,21 @@ public class DataBaseHandler extends SQLiteOpenHelper {
 	}
 
 
-//	public User getUser(int id) {
-//		String SQLcode = "select " + KEY_EMAIL + "," + KEY_PASSWORD + " from " + TABLE_USERS + " where " + KEY_ID + " = " + id;
-//		SQLiteDatabase db = getReadableDatabase();
-//		Cursor c = db.rawQuery(SQLcode,null);
-//		c.moveToFirst();
-//		User user = new User();
-//		user.setEmail(c.getString(0));
-//		user.setPassword(c.getString(1));
-//		return user;
-//	}
+	public User getUser(int id) {
+		try {
+			String SQLcode = "select " + KEY_EMAIL + "," + KEY_PASSWORD + " from " + TABLE_USERS + " where " + KEY_ID + " = " + id;
+			SQLiteDatabase db = getReadableDatabase();
+			Cursor c = db.rawQuery(SQLcode,null);
+			c.moveToFirst();
+			User user = new User();
+			user.setEmail(c.getString(0));
+			user.setPassword(c.getString(1));
+			return user;
+		}catch (SQLException e){
+			Log.w(TAG, "getUser: ",e );
+		}
+		return null;
+	}
 
 
 //	public List<User> getAllUsers() {
