@@ -2,11 +2,12 @@ package com.sam.amman.rescue.Adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceActivity;
 
 /**
  * Created by SAM on 5/8/2016.
  */
-public class Pref {
+public class Pref extends PreferenceActivity{
 
 
     SharedPreferences sharedPreferences;
@@ -22,31 +23,30 @@ public class Pref {
     }
 
 
-    public void setRememberMe(boolean remmeber) {
+    public final void setRememberMe(boolean remmeber) {
+
         editor.putBoolean("remember", remmeber);
 
     }
 
-    public boolean getRemmeber() {
+    public final boolean getRemmeber() {
         return sharedPreferences.getBoolean("remember", false);
     }
 
-    public void setEmail(String email) {
-        editor.putString("email", email);
-
+    public void setEmail(String e) {
+        editor.putString("email", e);
     }
 
     public String getEmail() {
-        return sharedPreferences.getString("email", "");
+        return sharedPreferences.getString("email", "empty");
     }
 
-    public void setpassword(String password) {
-        editor.putString("password", password);
-
+    public void setpassword(String p) {
+        editor.putString("password", p);
     }
 
     public String getpassword() {
-        return sharedPreferences.getString("password", "");
+        return sharedPreferences.getString("password", "empty");
     }
 
 

@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -21,17 +22,10 @@ import java.util.regex.Pattern;
 public class LoginActivity extends Activity {
 
 
-    DBHandler db;
-    Boolean rememberme = false;
     EditText emailTxt,passwordTxt;
     CheckBox remembermeChkBx;
-    SharedPreferences sharedPref,sharedPrefGet;
-    SharedPreferences.Editor PrefEditor;
-    Context context;
-
-    public static final String PREFS_NAME = "MyPrefsFile";
-
     Pref pref;
+    Context  context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,15 +35,12 @@ public class LoginActivity extends Activity {
         passwordTxt = (EditText)findViewById(R.id.EdTxtPassword);
         remembermeChkBx = (CheckBox) findViewById(R.id.remembermeChkBx);
 
+        pref = new Pref(LoginActivity.this);
         /**
          * get preferences
          */
-        pref = new Pref(LoginActivity.this);
-        //true
-        if (pref.getRemmeber()){
-            emailTxt.setText(pref.getEmail());
-            passwordTxt.setText(pref.getpassword());
-        }
+//        checkPref();
+
 
 
         /**
@@ -60,6 +51,7 @@ public class LoginActivity extends Activity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if(b){
+
                     pref.setRememberMe(true);
                     pref.setEmail(emailTxt.getText().toString());
                     pref.setpassword(passwordTxt.getText().toString());
@@ -93,7 +85,6 @@ public class LoginActivity extends Activity {
                 Intent intent = new Intent();
                 intent.setClass(getApplication(), NavigationMain.class);
                 startActivity(intent);
-                LoginActivity.this.finish();
 
             } else {
                 Toast.makeText(getApplication(), "wrong username or password", Toast.LENGTH_SHORT).show();
@@ -116,4 +107,17 @@ public class LoginActivity extends Activity {
     private boolean ValidEmail(String email) {
         return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
     }
+
+//    private void checkPref(){
+//        //pref = new Pref(LoginActivity.this);
+//
+//            if (pref!=null && pref.getRemmeber()==true){
+//                Intent intent = new Intent();
+//                intent.setClass(getApplication(), NavigationMain.class);
+//                startActivity(intent);
+//            }else{
+//
+//            }
+//
+//    }
 }
