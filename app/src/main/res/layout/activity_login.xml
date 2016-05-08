@@ -41,7 +41,6 @@
             android:hint="Email"
             android:autoLink="email"
             android:autoText="false"
-            android:enabled="false"
             android:focusable="true" />
 
         <EditText

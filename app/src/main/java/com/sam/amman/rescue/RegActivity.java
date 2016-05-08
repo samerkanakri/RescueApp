@@ -24,6 +24,8 @@ public class RegActivity extends AppCompatActivity {
     Spinner spinner;
     Button reg;
     EditText emailEdt,passwordEdt;
+    String emailStr ;
+    String passwordStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +33,8 @@ public class RegActivity extends AppCompatActivity {
 
         //getActionBar().setDisplayHomeAsUpEnabled(true);
 
-        emailEdt = (EditText) findViewById(R.id.email);
-        passwordEdt = (EditText) findViewById(R.id.password);
+        emailEdt = (EditText) findViewById(R.id.emailReg);
+        passwordEdt = (EditText) findViewById(R.id.passwordReg);
         reg = (Button) findViewById(R.id.BtnReg);
         db = new UserDBHandler(this);
 
@@ -40,9 +42,12 @@ public class RegActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //saving
-                String emailStr = emailEdt.getText().toString();
-                String passwordStr = passwordEdt.getText().toString();
+                emailStr = emailEdt.getText().toString();
+                passwordStr = passwordEdt.getText().toString();
                 if("".equals(emailStr) || "".equals(passwordStr)){
+
+                    Toast.makeText(RegActivity.this, "required fields should not be empty", Toast.LENGTH_SHORT).show();
+                }else{
 
                     if(ValidEmail(emailStr)){
                         try {
@@ -51,7 +56,6 @@ public class RegActivity extends AppCompatActivity {
                             user.setEmail(emailStr);
                             user.setPassword(passwordStr);
                             db.addUser(user);
-//                            db.addUserStr(emailStr,passwordStr);
                             db.close();
                             Toast.makeText(RegActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
@@ -61,9 +65,6 @@ public class RegActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(RegActivity.this, "invalid email", Toast.LENGTH_SHORT).show();
                     }
-                }else{
-
-                    Toast.makeText(RegActivity.this, "required fields should not be empty", Toast.LENGTH_SHORT).show();
                 }
 
             }

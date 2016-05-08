@@ -62,7 +62,7 @@
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/email"
+            android:id="@+id/emailReg"
             android:layout_gravity="center_horizontal"
             android:hint="Email"
             android:singleLine="true"
@@ -93,7 +93,7 @@
         <EditText
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:id="@+id/password"
+            android:id="@+id/passwordReg"
             android:layout_gravity="center_horizontal"
             android:hint="Password"
             android:singleLine="true" />
