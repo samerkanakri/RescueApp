@@ -35,7 +35,8 @@ public class Profile extends Fragment {
         try {
             UserDBHandler db = new UserDBHandler(context);
             User user;
-            user = db.getUser(1);  // using current user ID
+            String email = "";
+            user = db.getUser(email);  // using current user EMAIL
             emailTxt.setText(user.getEmail());
         }catch (SQLException e){
             Log.w("Profile", "onClick: ", e);

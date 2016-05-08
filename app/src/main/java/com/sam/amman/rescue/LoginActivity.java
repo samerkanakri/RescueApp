@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.DBHandler;
+import com.sam.amman.rescue.Adapters.Pref;
 import com.sam.amman.rescue.Adapters.UserDBHandler;
 import com.sam.amman.rescue.Normal.NavigationMain;
 
@@ -31,6 +31,7 @@ public class LoginActivity extends Activity {
 
     public static final String PREFS_NAME = "MyPrefsFile";
 
+    Pref pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,50 +44,41 @@ public class LoginActivity extends Activity {
         /**
          * get preferences
          */
-        {
-            sharedPrefGet = this.getPreferences(Context.MODE_PRIVATE);
-            String defaultValue = "";
-            String usernamePref = sharedPrefGet.getString(getString(R.string.preference_username), defaultValue);
-
-            //usernameTxt.setText(usernamePref);
+        pref = new Pref(LoginActivity.this);
+        //true
+        if (pref.getRemmeber()){
+            emailTxt.setText(pref.getEmail());
+            passwordTxt.setText(pref.getpassword());
         }
 
+
         /**
-         * save preferences
+         * set preferences
          */
         remembermeChkBx.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(remembermeChkBx.isChecked()){
-                    sharedPref = getPreferences(Context.MODE_PRIVATE);
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.putString(getString(R.string.preference_username), "");
-//        editor.putString(getString(R.string.preference_password), "");
-                    editor.commit();
-                }
-                else{
-                    SharedPreferences.Editor editor = sharedPref.edit();
-                    editor.clear();
-                    editor.commit();
+
+                if(b){
+                    pref.setRememberMe(true);
+                    pref.setEmail(emailTxt.getText().toString());
+                    pref.setpassword(passwordTxt.getText().toString());
+                    Toast.makeText(getApplication(), "pref set", Toast.LENGTH_SHORT).show();
+                }else{
+                    pref.setRememberMe(false);
+                    Toast.makeText(getApplication(), "pref cleared", Toast.LENGTH_SHORT).show();
                 }
             }
+
         });
 
-
-        ((Button)findViewById(R.id.BtnCallDoctor)).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                //intent.setClass(getApplication(),CallDoctor.class);
-                startActivity(intent);
-            }
-        });
     }
 
     public void register0(View view){
         Intent intent = new Intent();
         intent.setClass(getApplication(),RegActivity.class);
         startActivity(intent);
+//        LoginActivity.this.finish();
     }
 
     public void Login(View view){
@@ -101,6 +93,7 @@ public class LoginActivity extends Activity {
                 Intent intent = new Intent();
                 intent.setClass(getApplication(), NavigationMain.class);
                 startActivity(intent);
+                LoginActivity.this.finish();
 
             } else {
                 Toast.makeText(getApplication(), "wrong username or password", Toast.LENGTH_SHORT).show();

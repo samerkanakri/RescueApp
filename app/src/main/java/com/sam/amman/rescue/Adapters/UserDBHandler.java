@@ -84,6 +84,7 @@ public class UserDBHandler extends DBHandler {
         Cursor c = db.rawQuery(SQLcode,null);
         c.moveToFirst();
         try {
+
             do
             {
 
@@ -91,9 +92,9 @@ public class UserDBHandler extends DBHandler {
                     return true;
                 }
 
-
             }
             while(c.moveToNext());
+            return false;
         }catch (SQLException e){
             Log.w(TAG, "IsUser: stoped at " + c.getColumnIndex(KEY_EMAIL) , e);
         }
@@ -102,9 +103,9 @@ public class UserDBHandler extends DBHandler {
     }
 
 
-    public User getUser(int id) {
+    public User getUser(String email) {
         try {
-            String SQLcode = "select " + KEY_EMAIL + "," + KEY_PASSWORD + " from " + TABLE_USERS + " where " + KEY_UserID + " = " + id;
+            String SQLcode = "select " + KEY_EMAIL + "," + KEY_PASSWORD + " from " + TABLE_USERS + " where " + KEY_EMAIL + " = " + email;
             SQLiteDatabase db = getReadableDatabase();
             Cursor c = db.rawQuery(SQLcode,null);
             c.moveToFirst();

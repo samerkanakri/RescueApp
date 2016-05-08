@@ -19,17 +19,21 @@ public class SympListFragAdapter extends BaseAdapter {
     List<String> stringList=new ArrayList<>();
     Context c;
 
+    //constructor
     public SympListFragAdapter(List<String> stringList, Context c) {
         this.stringList = stringList;
         this.c = c;
     }
 
-    public void addAll(String[] item){
-        for (String i:item){
+    //add list of items
+    public void addAll(String[] items){
+        for (String i:items){
             stringList.add(i);
         }
         notifyDataSetChanged();
     }
+
+    //add single item
     public void add(String item){
         stringList.add(item);
 

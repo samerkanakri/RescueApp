@@ -17,16 +17,19 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".LoginActivity">
+
+        </activity>
+        <activity
+            android:name=".RegActivity"
+            android:parentActivityName=".LoginActivity"
+            />
+        <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".RegActivity"
-            android:parentActivityName=".LoginActivity" />
-
     </application>
 
 </manifest>

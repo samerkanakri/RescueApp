@@ -55,8 +55,8 @@ public class DBHandler extends SQLiteOpenHelper {
 
 	//create statements
 	//CREATE USER TABLE
-	protected static final String SQLCreate_UserTable = "CREATE TABLE " + TABLE_USERS + "(" + KEY_UserID + " integer primary key autoincrement, " +
-			KEY_EMAIL + " varchar," + KEY_PASSWORD + " varchar" + ")";
+	protected static final String SQLCreate_UserTable = "CREATE TABLE " + TABLE_USERS + "(" +
+			KEY_EMAIL + " varchar primary key," + KEY_PASSWORD + " varchar" + ")";
 
 	//CREATE DIAGNOSES TABLE
 	protected static final String SQLCreate_DiagnosesTable = "CREATE TABLE " + TABLE_DIAGNOSES + "(" + KEY_DiagnoseID + " integer primary key autoincrement, " +

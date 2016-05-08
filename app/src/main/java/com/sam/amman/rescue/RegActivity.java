@@ -31,7 +31,7 @@ public class RegActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
 
-        //getActionBar().setDisplayHomeAsUpEnabled(true);
+//        getActionBar().setDisplayHomeAsUpEnabled(true);
 
         emailEdt = (EditText) findViewById(R.id.emailReg);
         passwordEdt = (EditText) findViewById(R.id.passwordReg);
