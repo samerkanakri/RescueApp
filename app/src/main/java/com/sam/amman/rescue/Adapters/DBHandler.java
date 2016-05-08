@@ -18,6 +18,9 @@ public class DBHandler extends SQLiteOpenHelper {
 	//version
 	protected static final int DATABASE_VERSION = 1;
 
+	//TAG
+	protected static final String TAG = "DATABASE";
+
 	//database name
 	protected static final String DATABASE_NAME = "rescue";
 
@@ -27,10 +30,15 @@ public class DBHandler extends SQLiteOpenHelper {
 	protected static final String TABLE_DIAGNOSES = "diagnoses";
 
 
-
-
 	//USER fields
 	protected static final String KEY_UserID = "Uid";
+	protected static final String KEY_FIRST_NAME = "Fname";
+	protected static final String KEY_LAST_NAME = "Lname";
+	protected static final String KEY_DoB = "DoB";
+	protected static final String KEY_PHONE = "phone";
+	protected static final String KEY_ADDRESS = "address";
+	protected static final String KEY_GENDER = "gender";
+	protected static final String KEY_BLOOD = "blood";
 	protected static final String KEY_EMAIL = "email";
 	protected static final String KEY_PASSWORD = "password";
 
@@ -43,8 +51,7 @@ public class DBHandler extends SQLiteOpenHelper {
 	protected static final String KEY_DiagnoseID = "Did";
 	protected static final String KEY_DIAGNOSES_NAME = "symp_name";
 
-	//TAG
-	protected static final String TAG = "DATABASE";
+
 
 	//create statements
 	//CREATE USER TABLE
@@ -71,9 +78,9 @@ public class DBHandler extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		try {
-			db.execSQL(SQLCreate_UserTable);
-			db.execSQL(SQLCreate_DiagnosesTable);
-			db.execSQL(SQLCreate_SymptomsTable);
+//			db.execSQL(SQLCreate_UserTable);
+//			db.execSQL(SQLCreate_DiagnosesTable);
+//			db.execSQL(SQLCreate_SymptomsTable);
 		} catch (SQLException e) {
 			Log.w(TAG, "onCreate: ",e );
 		}

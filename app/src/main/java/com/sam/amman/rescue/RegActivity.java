@@ -11,8 +11,11 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.sam.amman.rescue.Actors.User;
 import com.sam.amman.rescue.Adapters.DBHandler;
 import com.sam.amman.rescue.Adapters.UserDBHandler;
+
+import java.util.regex.Pattern;
 
 public class RegActivity extends AppCompatActivity {
 
@@ -40,21 +43,27 @@ public class RegActivity extends AppCompatActivity {
                 String emailStr = emailEdt.getText().toString();
                 String passwordStr = passwordEdt.getText().toString();
                 if("".equals(emailStr) || "".equals(passwordStr)){
-                    Log.w("Registration ", "onClick: ",null );
-                }else{
-                    try {
-                        db = new UserDBHandler(getApplication());
-//                        User user = new User();
-//                        user.setEmail(usernameEdt.getText().toString());
-//                        user.setPassword(password.getText().toString());
-//                        db.addUser(user);
-                        db.addUserStr(emailStr,passwordStr);
-                        db.close();
-                        Toast.makeText(RegActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
-                    } catch (Exception e) {
-                        Log.w(" --- ", "onClick: ",e );
-                        Toast.makeText(RegActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+
+                    if(ValidEmail(emailStr)){
+                        try {
+                            db = new UserDBHandler(getApplication());
+                            User user = new User();
+                            user.setEmail(emailStr);
+                            user.setPassword(passwordStr);
+                            db.addUser(user);
+//                            db.addUserStr(emailStr,passwordStr);
+                            db.close();
+                            Toast.makeText(RegActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
+                        } catch (Exception e) {
+                            Log.w(" --- ", "onClick: ",e );
+                            Toast.makeText(RegActivity.this, "Error", Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        Toast.makeText(RegActivity.this, "invalid email", Toast.LENGTH_SHORT).show();
                     }
+                }else{
+
+                    Toast.makeText(RegActivity.this, "required fields should not be empty", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -79,4 +88,17 @@ public class RegActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+    );
+
+    private boolean ValidEmail(String email) {
+        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+    }
 }

@@ -16,6 +16,16 @@ public class UserDBHandler extends DBHandler {
         super(context);
     }
 
+    // Creating User Table
+    @Override
+    public void onCreate(SQLiteDatabase db) {
+        try {
+            db.execSQL(SQLCreate_UserTable);
+        } catch (SQLException e) {
+            Log.w(TAG, "onCreate: ",e );
+        }
+    }
+
     /**
      * adding new user to db using User object [ NOT WORKING ]
      *
@@ -73,15 +83,20 @@ public class UserDBHandler extends DBHandler {
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(SQLcode,null);
         c.moveToFirst();
-        do
-        {
-            User u = new User();
-            if(c.getString(0).equals(email) && c.getString(1).equals(password)){
-                return true;
-            }
+        try {
+            do
+            {
 
+                if(c.getString(0).equals(email) && c.getString(1).equals(password)){
+                    return true;
+                }
+
+
+            }
+            while(c.moveToNext());
+        }catch (SQLException e){
+            Log.w(TAG, "IsUser: stoped at " + c.getColumnIndex(KEY_EMAIL) , e);
         }
-        while(c.moveToNext());
 
         return false;
     }

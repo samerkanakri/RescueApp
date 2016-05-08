@@ -16,12 +16,14 @@ import com.sam.amman.rescue.Adapters.DBHandler;
 import com.sam.amman.rescue.Adapters.UserDBHandler;
 import com.sam.amman.rescue.Normal.NavigationMain;
 
+import java.util.regex.Pattern;
+
 public class LoginActivity extends Activity {
 
 
     DBHandler db;
     Boolean rememberme = false;
-    EditText usernameTxt,passwordTxt;
+    EditText emailTxt,passwordTxt;
     CheckBox remembermeChkBx;
     SharedPreferences sharedPref,sharedPrefGet;
     SharedPreferences.Editor PrefEditor;
@@ -34,7 +36,7 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        usernameTxt = (EditText)findViewById(R.id.EdTxtUsername);
+        emailTxt = (EditText)findViewById(R.id.EdTxtEmail);
         passwordTxt = (EditText)findViewById(R.id.EdTxtPassword);
         remembermeChkBx = (CheckBox) findViewById(R.id.remembermeChkBx);
 
@@ -71,37 +73,6 @@ public class LoginActivity extends Activity {
         });
 
 
-        ((Button)findViewById(R.id.BtnLogin)).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                UserDBHandler db = new UserDBHandler(getApplication());
-
-                if (db.IsUser(usernameTxt.getText().toString(),passwordTxt.getText().toString())) {
-
-                    // check for Role
-
-                    Intent intent = new Intent();
-                    intent.setClass(getApplication(), NavigationMain.class);
-                    startActivity(intent);
-
-                } else {
-                    Toast.makeText(getApplication(), "wrong username or password", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-
-        ((Button)findViewById(R.id.BtnRegister)).setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-
-
-                Intent intent = new Intent();
-                intent.setClass(getApplication(),RegActivity.class);
-                startActivity(intent);
-            }
-        });
-
         ((Button)findViewById(R.id.BtnCallDoctor)).setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -110,5 +81,46 @@ public class LoginActivity extends Activity {
                 startActivity(intent);
             }
         });
+    }
+
+    public void register0(View view){
+        Intent intent = new Intent();
+        intent.setClass(getApplication(),RegActivity.class);
+        startActivity(intent);
+    }
+
+    public void Login(View view){
+        UserDBHandler db = new UserDBHandler(getApplication());
+        String email = emailTxt.getText().toString();
+        String password = passwordTxt.getText().toString();
+        if(ValidEmail(email)){
+            if (db.IsUser(email,password)) {
+
+                // check for Role
+
+                Intent intent = new Intent();
+                intent.setClass(getApplication(), NavigationMain.class);
+                startActivity(intent);
+
+            } else {
+                Toast.makeText(getApplication(), "wrong username or password", Toast.LENGTH_SHORT).show();
+            }
+        }else{
+            Toast.makeText(getApplication(), "invalid email", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+    );
+
+    private boolean ValidEmail(String email) {
+        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
     }
 }
