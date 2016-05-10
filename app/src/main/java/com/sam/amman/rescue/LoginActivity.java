@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
@@ -12,20 +13,21 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Adapters.DBHandler;
-import com.sam.amman.rescue.Adapters.Pref;
+import com.sam.amman.rescue.Adapters.Prefs;
 import com.sam.amman.rescue.Adapters.UserDBHandler;
 import com.sam.amman.rescue.Normal.NavigationMain;
 
 import java.util.regex.Pattern;
 
-public class LoginActivity extends Activity {
+public class LoginActivity extends AppCompatActivity {
 
 
     EditText emailTxt,passwordTxt;
     CheckBox remembermeChkBx;
-    Pref pref;
     Context  context;
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +37,13 @@ public class LoginActivity extends Activity {
         passwordTxt = (EditText)findViewById(R.id.EdTxtPassword);
         remembermeChkBx = (CheckBox) findViewById(R.id.remembermeChkBx);
 
-        pref = new Pref(LoginActivity.this);
-        /**
-         * get preferences
-         */
-//        checkPref();
+//        /**
+//         * get preferences
+//         */
+//        Prefs pref = new Prefs(this);
+//        if(pref.getRemmeber()){
+//            Toast.makeText(getApplication(), "i remember you", Toast.LENGTH_SHORT).show();
+//        }
 
 
 
@@ -51,14 +55,14 @@ public class LoginActivity extends Activity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if(b){
-
+                    Prefs pref = new Prefs(getApplication());
                     pref.setRememberMe(true);
-                    pref.setEmail(emailTxt.getText().toString());
-                    pref.setpassword(passwordTxt.getText().toString());
+//                    pref.setEmail(emailTxt.getText().toString());
+//                    pref.setpassword(passwordTxt.getText().toString());
                     Toast.makeText(getApplication(), "pref set", Toast.LENGTH_SHORT).show();
                 }else{
-                    pref.setRememberMe(false);
-                    Toast.makeText(getApplication(), "pref cleared", Toast.LENGTH_SHORT).show();
+//                    pref.setRememberMe(false);
+//                    Toast.makeText(getApplication(), "pref cleared", Toast.LENGTH_SHORT).show();
                 }
             }
 

@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Choose symptoms  [Category]:"
+            android:text="What happened ?"
             android:id="@+id/textView6" />
 
         <CheckBox
@@ -61,45 +61,50 @@
             android:layout_width="match_parent"
             android:layout_height="150dp"></FrameLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Anything else?"
-            android:id="@+id/textView7" />
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/editText3" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:layout_gravity="center_horizontal" />
-
         <LinearLayout
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:gravity="center_vertical|center_horizontal">
+            android:layout_gravity="center_horizontal">
 
-            <Button
-                android:layout_width="130dp"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Send"
-                android:id="@+id/BtnSendSymp" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Anything else?"
+                android:id="@+id/textView7" />
 
-            <Button
-                android:layout_width="130dp"
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/editText3" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Cancel"
-                android:onClick="cancel"
-                android:id="@+id/button7" />
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true">
+
+                <Button
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Send"
+                    android:id="@+id/BtnSendSymp" />
+
+                <Button
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:text="Cancel"
+                    android:onClick="cancel"
+                    android:id="@+id/button7" />
+
+            </LinearLayout>
+
         </LinearLayout>
 
-
-
     </LinearLayout>
+
+
 </RelativeLayout>

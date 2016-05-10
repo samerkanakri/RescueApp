@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="Login"
+        >
+
+        <CheckBoxPreference
+            android:key="rememberme"
+            android:title="remember me"
+            android:summary="keep me logged in"
+            >
+
+        </CheckBoxPreference>
+
+    </PreferenceCategory>
+</PreferenceScreen>

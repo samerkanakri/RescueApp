@@ -16,13 +16,10 @@
             android:name=".Normal.NavigationMain"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".LoginActivity">
-
-        </activity>
+        <activity android:name=".LoginActivity"></activity>
         <activity
             android:name=".RegActivity"
-            android:parentActivityName=".LoginActivity"
-            />
+            android:parentActivityName=".LoginActivity" />
         <activity android:name=".SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
