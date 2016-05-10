@@ -176,44 +176,5 @@ public class NavigationMain extends AppCompatActivity
         return true;
     }
 
-    public void onCheckboxClicked(View v){
-        // Is the view now checked?
-        boolean checked = ((CheckBox) v).isChecked();
 
-        // Check which checkbox was clicked
-        switch(v.getId()) {
-            case R.id.symp1:
-                if (checked)
-                    Toast.makeText(this,"symp added to list",Toast.LENGTH_LONG).show();
-                else{
-                    // Remove from list
-                }
-                break;
-            case R.id.symp2:
-                if (checked){
-                    Toast.makeText(this,"symp added to list",Toast.LENGTH_LONG).show();
-                }
-                else{
-
-                }
-                break;
-            case R.id.symp3:
-                if (checked){
-                    Toast.makeText(this,"symp added to list",Toast.LENGTH_LONG).show();
-                }
-                else{
-
-                }
-                break;
-            case R.id.symp4:
-                if (checked){
-                    Toast.makeText(this,"symp added to list",Toast.LENGTH_LONG).show();
-                }
-                else{
-
-                }
-                break;
-            // TODO: Veggie sandwich
-        }
-    }
 }

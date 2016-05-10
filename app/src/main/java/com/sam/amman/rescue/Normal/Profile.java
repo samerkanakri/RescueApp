@@ -48,7 +48,7 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View view) {
 
-                // update data base
+                // update database
 
 
             }

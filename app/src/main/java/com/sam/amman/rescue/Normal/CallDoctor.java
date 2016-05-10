@@ -7,23 +7,18 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.R;
 
 
+
 public class CallDoctor extends Fragment {
 
-//    @Override
-//    protected void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.call_doctor);
-//
-//
-//    }
-
-
+    ListView categoriesLst;
     Button BtnSendSymp;
     View v;
     @Nullable
@@ -35,6 +30,16 @@ public class CallDoctor extends Fragment {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(),"Symptoms will be sent", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        categoriesLst = (ListView) v.findViewById(R.id.catLst);
+        categoriesLst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                // get from database list of symptoms by id
+
             }
         });
 

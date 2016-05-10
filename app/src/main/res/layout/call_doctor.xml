@@ -24,42 +24,25 @@
             android:text="What happened ?"
             android:id="@+id/textView6" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Burn"
-            android:onClick="onCheckboxClicked"
-            android:id="@+id/symp1"
-            android:checked="false" />
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Drown"
-            android:onClick=""
-            android:id="@+id/symp2"
-            android:checked="false" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Car accedent"
-            android:onClick="onCheckboxClicked"
-            android:id="@+id/symp3"
-            android:checked="false" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Heart attack"
-            android:onClick="onCheckboxClicked"
-            android:id="@+id/symp4"
-            android:checked="false" />
+        <ListView
+            android:layout_width="match_parent"
+            android:layout_height="144dp"
+            android:id="@+id/catLst" />
 
         <FrameLayout
             android:id="@+id/sympListFrame"
             android:layout_width="match_parent"
-            android:layout_height="150dp"></FrameLayout>
+            android:layout_height="150dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="syptoms list here"
+                android:id="@+id/textView"
+                android:layout_gravity="center" />
+        </FrameLayout>
 
         <LinearLayout
             android:orientation="vertical"
