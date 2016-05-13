@@ -1,8 +1,13 @@
 package com.sam.amman.rescue;
 
+import android.drm.DrmStore;
+import android.os.AsyncTask;
+import android.os.PersistableBundle;
 import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,6 +18,7 @@ import android.widget.Toast;
 
 import com.sam.amman.rescue.Actors.User;
 import com.sam.amman.rescue.Adapters.DBHandler;
+import com.sam.amman.rescue.Adapters.ServiceHandler;
 import com.sam.amman.rescue.Adapters.UserDBHandler;
 
 import java.util.regex.Pattern;
@@ -21,6 +27,8 @@ public class RegActivity extends AppCompatActivity {
 
 
     UserDBHandler db;
+    String response;
+    String url;
     Spinner spinner;
     Button reg;
     EditText emailEdt,passwordEdt;
@@ -31,33 +39,54 @@ public class RegActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
 
-//        getActionBar().setDisplayHomeAsUpEnabled(true);
 
+        /**
+         * ACTION BAR
+         */
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+//        setSupportActionBar(toolbar);
+//        getSupportActionBar().setHomeButtonEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        /**
+         * VIEWS
+         */
         emailEdt = (EditText) findViewById(R.id.emailReg);
         passwordEdt = (EditText) findViewById(R.id.passwordReg);
         reg = (Button) findViewById(R.id.BtnReg);
         db = new UserDBHandler(this);
 
+        /**
+         * registration button
+         */
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //saving
                 emailStr = emailEdt.getText().toString();
                 passwordStr = passwordEdt.getText().toString();
+
+
                 if("".equals(emailStr) || "".equals(passwordStr)){
 
                     Toast.makeText(RegActivity.this, "required fields should not be empty", Toast.LENGTH_SHORT).show();
                 }else{
 
+
                     if(ValidEmail(emailStr)){
                         try {
-                            db = new UserDBHandler(getApplication());
-                            User user = new User();
-                            user.setEmail(emailStr);
-                            user.setPassword(passwordStr);
-                            db.addUser(user);
-                            db.close();
-                            Toast.makeText(RegActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
+//                            db = new UserDBHandler(getApplication());
+//                            User user = new User();
+//                            user.setEmail(emailStr);
+//                            user.setPassword(passwordStr);
+//                            db.addUser(user);
+//                            db.close();
+                            ;
+                            //send data to web service in a new thread
+                            SendData send = new SendData();
+                            send.execute();
+
+                            //Toast.makeText(RegActivity.this, "Successfully registered", Toast.LENGTH_SHORT).show();
                         } catch (Exception e) {
                             Log.w(" --- ", "onClick: ",e );
                             Toast.makeText(RegActivity.this, "Error", Toast.LENGTH_SHORT).show();
@@ -83,7 +112,6 @@ public class RegActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -102,4 +130,38 @@ public class RegActivity extends AppCompatActivity {
     private boolean ValidEmail(String email) {
         return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
     }
+
+
+    class SendData extends AsyncTask<Void, Void, Void>{
+
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+
+            ServiceHandler serviceHandler = new ServiceHandler();
+
+            try {
+
+                //?TODO=login&email="+"user9@email.com"+"&password="+"password9
+                url = "http://rescueproject2016.netne.net/myPHP/register.php";
+//                response = serviceHandler.POSTJSON("http://rescueproject2016.netne.net/myPHP/post.php","samer","");
+                response = serviceHandler.RegisterOnService(url,emailStr,passwordStr);
+            }catch (Exception e){
+                Toast.makeText(RegActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+
+            return null;
+
+
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            Toast.makeText(RegActivity.this, response, Toast.LENGTH_SHORT).show();
+        }
+    };
+
+
 }

@@ -29,21 +29,21 @@ public class Profile extends Fragment {
         v = inflater.inflate(R.layout.activity_profile,container,false);
 
         emailTxt = (EditText) v.findViewById(R.id.emailEdtxt);
-
+        submit = (Button) v.findViewById(R.id.BtnSubmit);
 
         //get current user data
-        try {
-            UserDBHandler db = new UserDBHandler(context);
-            User user;
-            String email = "";
-            user = db.getUser(email);  // using current user EMAIL
-            emailTxt.setText(user.getEmail());
-        }catch (SQLException e){
-            Log.w("Profile", "onClick: ", e);
-        }
+//        try {
+//            UserDBHandler db = new UserDBHandler(context);
+//            User user;
+//            String email = "";
+//            user = db.getUser(email);  // using current user EMAIL
+//            emailTxt.setText(user.getEmail());
+//        }catch (SQLException e){
+//            Log.w("Profile", "onClick: ", e);
+//        }
 
 
-        submit = (Button) v.findViewById(R.id.BtnSubmit);
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

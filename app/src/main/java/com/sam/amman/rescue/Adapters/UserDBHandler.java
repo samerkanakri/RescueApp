@@ -18,7 +18,7 @@ public class UserDBHandler extends DBHandler {
 
     // Creating User Table
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public synchronized void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(SQLCreate_UserTable);
         } catch (SQLException e) {
@@ -31,7 +31,7 @@ public class UserDBHandler extends DBHandler {
      *
      * @param user
      */
-    public void addUser(User user) {
+    public synchronized void addUser(User user) {
         try {
             SQLiteDatabase db = getWritableDatabase();
             String SQLcode = "insert into " + TABLE_USERS + "(" + KEY_EMAIL + "," + KEY_PASSWORD + ") values ('" + user.getEmail() + "'," + user.getPassword() + ")";
@@ -59,7 +59,7 @@ public class UserDBHandler extends DBHandler {
      * @param email
      * @param password
      */
-    public void addUserStr(String email,String password) {
+    public synchronized void addUserStr(String email,String password) {
         try {
             SQLiteDatabase db = getWritableDatabase();
             String SQLcode = "insert into " + TABLE_USERS + "(" + KEY_EMAIL + "," + KEY_PASSWORD + ") values ('" + email + "'," + password + ")";
@@ -78,7 +78,7 @@ public class UserDBHandler extends DBHandler {
      * @param password
      * @return Boolean
      */
-    public Boolean IsUser(String email,String password){
+    public synchronized Boolean IsUser(String email,String password){
         String SQLcode = "Select " + KEY_EMAIL + "," + KEY_PASSWORD + " from " + TABLE_USERS;
         SQLiteDatabase db = getReadableDatabase();
         Cursor c = db.rawQuery(SQLcode,null);
@@ -96,14 +96,14 @@ public class UserDBHandler extends DBHandler {
             while(c.moveToNext());
             return false;
         }catch (SQLException e){
-            Log.w(TAG, "IsUser: stoped at " + c.getColumnIndex(KEY_EMAIL) , e);
+            Log.w(TAG, "IsUser: stopped at " + c.getColumnIndex(KEY_EMAIL) , e);
         }
 
         return false;
     }
 
 
-    public User getUser(String email) {
+    public synchronized User getUser(String email) {
         try {
             String SQLcode = "select " + KEY_EMAIL + "," + KEY_PASSWORD + " from " + TABLE_USERS + " where " + KEY_EMAIL + " = " + email;
             SQLiteDatabase db = getReadableDatabase();
