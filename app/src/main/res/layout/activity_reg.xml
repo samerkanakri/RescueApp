@@ -96,7 +96,8 @@
             android:id="@+id/passwordReg"
             android:layout_gravity="center_horizontal"
             android:hint="Password"
-            android:singleLine="true" />
+            android:singleLine="true"
+            android:password="true"/>
 
 
 

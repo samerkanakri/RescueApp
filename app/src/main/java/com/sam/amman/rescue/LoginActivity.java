@@ -224,6 +224,7 @@ public class LoginActivity extends AppCompatActivity {
 //                Log.e("ServiceHandler", "Couldn't get any data from the urlGet");
 //            }
 
+
         }
     }
 

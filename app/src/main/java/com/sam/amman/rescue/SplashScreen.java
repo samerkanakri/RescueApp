@@ -19,6 +19,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         ShowSplashScreen();
+
     }
 
     private void ShowSplashScreen() {
@@ -38,7 +39,7 @@ public class SplashScreen extends AppCompatActivity {
          */
         Prefs pref = new Prefs(this);
         if(pref.getRemmeber()){
-            Toast.makeText(getApplication(), "i remember you H a H a", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplication(), "i remember you", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SplashScreen.this,NavigationMain.class);
             startActivity(intent);
             SplashScreen.this.finish();
@@ -49,4 +50,5 @@ public class SplashScreen extends AppCompatActivity {
         }
 
     }
+
 }
