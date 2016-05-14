@@ -163,7 +163,7 @@ public class ServiceHandler {
             HttpClient httpclient = new DefaultHttpClient();
 
             // 2. make POST request to the given URL
-            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password"+pass);
+            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password="+pass);
 
 //            String json = "";
 
@@ -226,7 +226,7 @@ public class ServiceHandler {
             HttpClient httpclient = new DefaultHttpClient();
 
             // 2. make POST request to the given URL
-            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password"+pass);
+            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password="+pass);
 
             // 7. Set some headers to inform server about the type of the content
             httpPost.setHeader("Accept", "application/json");

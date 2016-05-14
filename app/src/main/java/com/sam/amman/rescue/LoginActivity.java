@@ -131,7 +131,7 @@ public class LoginActivity extends AppCompatActivity {
         protected void onPreExecute() {
             super.onPreExecute();
 
-
+            Toast.makeText(getApplication(), "sending " + emailtosend, Toast.LENGTH_SHORT).show();
 
 
 
@@ -155,7 +155,8 @@ public class LoginActivity extends AppCompatActivity {
 //            }
 
             ServiceHandler serviceHandler = new ServiceHandler();
-            url = "http://rescueproject2016.netne.net/myPHP/login.php?";
+            url = "http://rescueproject2016.netne.net/myPHP/login.php";
+
             response = serviceHandler.LoginOnService(url,emailtosend,passwordtosend);
 
 //            try {
@@ -182,8 +183,8 @@ public class LoginActivity extends AppCompatActivity {
 //            e.setText(StrJson);
 //            Toast.makeText(getApplication(),"response",Toast.LENGTH_SHORT).show();
             response = response.trim();
-            Toast.makeText(getApplication(), response,Toast.LENGTH_SHORT).show();
-            if(response =="1"){
+            Toast.makeText(getApplication(), "recieving "+response,Toast.LENGTH_SHORT).show();
+            if(response.equals("1")){
                 gotoMain();
             }else{
                 Toast.makeText(getApplication(), "email does not exist", Toast.LENGTH_SHORT).show();
