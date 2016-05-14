@@ -108,7 +108,7 @@ public class ServiceHandler {
             HttpClient httpclient = new DefaultHttpClient();
 
             // 2. make POST request to the given URL
-            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password"+pass);
+            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password="+pass);
 
 //            String json = "";
 
@@ -209,6 +209,33 @@ public class ServiceHandler {
         return result;
     }
 
+
+    public String UpdateService(String url,String email,String fname){
+        InputStream inputStream = null;
+        String result = "";
+        try {
+
+            HttpClient httpclient = new DefaultHttpClient();
+
+            HttpPost httpPost = new HttpPost(url+"?email="+email+"&fname="+fname);
+
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Content-type", "application/json");
+
+            HttpResponse httpResponse = httpclient.execute(httpPost);
+
+            if(httpResponse != null)
+                result = EntityUtils.toString(httpResponse.getEntity());
+            else
+                result = "Did not work!";
+
+        } catch (Exception e) {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        // 11. return result
+        return result;
+    }
 
     /**
      *        THIS ONE WILL TAKE MORE PARAMS FOR REGISTRATION
