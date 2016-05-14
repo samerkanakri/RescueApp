@@ -160,7 +160,7 @@ public class RegActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
             response=response.trim();
-            response = response.substring(0,1);
+            //response = response.substring(0,1);
             Toast.makeText(RegActivity.this, response, Toast.LENGTH_SHORT).show();
         }
     };

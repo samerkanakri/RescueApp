@@ -35,13 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="150dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:text="syptoms list here"
-                android:id="@+id/textView"
-                android:layout_gravity="center" />
         </FrameLayout>
 
         <LinearLayout

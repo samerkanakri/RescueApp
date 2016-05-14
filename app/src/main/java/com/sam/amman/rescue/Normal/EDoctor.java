@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -24,10 +25,25 @@ public class EDoctor extends Fragment {
         v = inflater.inflate(R.layout.edoctor,container,false);
         sympLst = (ListView) v.findViewById(R.id.SymptomsLst);
 
+        //categories list
+        String[] sympSource = {"1","2","3"};
+        ArrayAdapter<String> sympAdapter =
+                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, sympSource);
+        sympLst.setAdapter(sympAdapter);
 
-        Fragment frg = new DiagnosesListfrag();
-        FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,frg);
-        tr.commit();
+        sympLst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                // CHANGE DATA SOURCE DEPENDING ON i
+
+                Fragment frg = new DiagnosesListfrag();
+                FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,frg);
+                tr.commit();
+            }
+        });
+
+
 
         return v;
     }

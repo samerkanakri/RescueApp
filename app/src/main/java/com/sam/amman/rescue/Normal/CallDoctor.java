@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -33,20 +34,28 @@ public class CallDoctor extends Fragment {
             }
         });
 
+        //categories list
         categoriesLst = (ListView) v.findViewById(R.id.catLst);
+        String[] sympSource = {"1","2","3"};
+        ArrayAdapter<String> sympAdapter =
+                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, sympSource);
+        categoriesLst.setAdapter(sympAdapter);
+
+
         categoriesLst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                // get from database list of symptoms by id
+                // CHANGE DATA SOURCE DEPENDING ON i
 
+                //symptoms list
+                Fragment frg = new SymptomsListfrag();
+                FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,frg);
+                tr.commit();
             }
         });
 
 
-        Fragment fr = new SymptomsListfrag();
-        FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,fr);
-        tr.commit();
         return v;
     }
 }
