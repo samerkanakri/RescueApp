@@ -35,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     Context  context;
 
 
+    String url;
+    boolean isuser = false;
     ServiceHandler serviceHandler;
     String StrJson , resPost ;
     String newJson;
@@ -47,6 +49,15 @@ public class LoginActivity extends AppCompatActivity {
     final String TAG_FNAME = "Fname";
     String email , password;
     String myj , result;
+    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+                    "\\@" +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+                    "(" +
+                    "\\." +
+                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+                    ")+"
+    );
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,14 +67,6 @@ public class LoginActivity extends AppCompatActivity {
         emailTxt = (EditText)findViewById(R.id.EdTxtEmail);
         passwordTxt = (EditText)findViewById(R.id.EdTxtPassword);
         remembermeChkBx = (CheckBox) findViewById(R.id.remembermeChkBx);
-
-
-        //serviceHandler = new ServiceHandler();
-//        GetJSONData jsonData = new GetJSONData();
-//        jsonData.execute();
-
-
-
 
         /**
          * set preferences
@@ -83,8 +86,50 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void Login(View view){
+        //UserDBHandler db = new UserDBHandler(getApplication());
+        email = emailTxt.getText().toString();
+        password = passwordTxt.getText().toString();
+
+        if("".equals(email) || "".equals(password)){
+            Toast.makeText(getApplication(), "required fields cannot be empty", Toast.LENGTH_SHORT).show();
+        }else{
+            if(ValidEmail(email)){
+                // LOCAL
+//            if (db.IsUser(email,password)) {
+//
+//                // check for Role
+//
+////                Intent intent = new Intent();
+////                intent.setClass(getApplication(), NavigationMain.class);
+////                startActivity(intent);
+//
+//            } else {
+//                Toast.makeText(getApplication(), "wrong username or password", Toast.LENGTH_SHORT).show();
+//            }
+                GetJSONData jsonData = new GetJSONData();
+                jsonData.execute();
+//                if(isuser){
+//                    Intent intent = new Intent();
+//                    intent.setClass(getApplication(), NavigationMain.class);
+//                    startActivity(intent);
+//                }else{
+//                    Toast.makeText(getApplication(), "email does not exist", Toast.LENGTH_SHORT).show();
+//                }
+            }else{
+                Toast.makeText(getApplication(), "invalid email", Toast.LENGTH_SHORT).show();
+            }
+        }
+
 
     }
+
+    private boolean ValidEmail(String email) {
+        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+    }
+
 
     public void register0(View view){
         Intent intent = new Intent();
@@ -93,48 +138,7 @@ public class LoginActivity extends AppCompatActivity {
 //        LoginActivity.this.finish();
     }
 
-    public void Login(View view){
-        UserDBHandler db = new UserDBHandler(getApplication());
-        String email = emailTxt.getText().toString();
-
-
-        GetJSONData jsonData = new GetJSONData();
-        jsonData.execute();
-
-        if(ValidEmail(email)){
-            if (db.IsUser(email,password)) {
-
-                // check for Role
-
-                Intent intent = new Intent();
-                intent.setClass(getApplication(), NavigationMain.class);
-                startActivity(intent);
-
-            } else {
-                Toast.makeText(getApplication(), "wrong username or password", Toast.LENGTH_SHORT).show();
-            }
-        }else{
-            Toast.makeText(getApplication(), "invalid email", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
-            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                    "\\@" +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                    "(" +
-                    "\\." +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                    ")+"
-    );
-
-    private boolean ValidEmail(String email) {
-        return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
-    }
-
-
-
-    class GetJSONData extends AsyncTask<Void,Void,Void> {
+    class GetJSONData extends AsyncTask<Void,Void,Void> { //on pre  , through , post execute
 
         @Override
         protected void onPreExecute() {
@@ -149,7 +153,6 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         protected Void doInBackground(Void... voids) {
-
 
 //            StrJson = serviceHandler.makeServiceCall(
 //                    urlGet,
@@ -166,25 +169,23 @@ public class LoginActivity extends AppCompatActivity {
 
             serviceHandler = new ServiceHandler();
 
-            try {
-                JSONObject newJsonObj = new JSONObject();
-                newJson = "{\"data\":{\"Email\":\"samer.kanakre@email.com\",\"Password\":\"mypassword\"}";
-                newJsonObj.put("Email","samer.kanakre@email.com");
-            }catch (JSONException e){
-                Log.w("J S O N ", "onPreExecute: ",e );
-            }
+//            try {
+//                JSONObject newJsonObj = new JSONObject();
+//                newJson = "{\"data\":{\"Email\":\"samer.kanakre@email.com\",\"Password\":\"mypassword\"}";
+//                newJsonObj.put("Email","samer.kanakre@email.com");
+//            }catch (JSONException e){
+//                Log.w("J S O N ", "onPreExecute: ",e );
+//            }
 
-            User user = new User();
-            user.setEmail("SAMER.KANAKRE");
-            user.setPassword("123");
+//            User user = new User();
+//            user.setEmail(email);
+//            user.setPassword(password);
 //            result = serviceHandler.POSTJSON("http://rescueproject2016.netne.net/myPHP/post.php","samer","");
-            result = serviceHandler.POSTJSON("http://rescueproject2016.netne.net/myPHP/register.php","samer","");
-//            result = serviceHandler.makeServiceCall("http://rescueproject2016.netne.net/myPHP/post.php",2);
-
-
+            url = "http://rescueproject2016.netne.net/myPHP/log_in.php?";
+            result = serviceHandler.LoginOnService(url,"user@email.com","password");
 
             return null;
-        }//on pre execute , through , post
+        }
 
         @Override
         protected void onPostExecute(Void aVoid) {
@@ -192,9 +193,14 @@ public class LoginActivity extends AppCompatActivity {
 
 //            e.setText(StrJson);
 //            Toast.makeText(getApplication(),"response",Toast.LENGTH_SHORT).show();
-
-
+            result = result.trim();
+            result = result.substring(0,1);
             Toast.makeText(getApplication(),result,Toast.LENGTH_SHORT).show();
+            if(result=="1"){
+                gotoMain();
+            }else{
+                Toast.makeText(getApplication(), "email does not exist", Toast.LENGTH_SHORT).show();
+            }
 //            if (StrJson != null) {
 //                try {
 //                    JSONObject jsonObj = new JSONObject(StrJson);
@@ -233,5 +239,9 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-
+    public void gotoMain(){
+        Intent intent = new Intent();
+        intent.setClass(getApplication(), NavigationMain.class);
+        startActivity(intent);
+    }
 }
