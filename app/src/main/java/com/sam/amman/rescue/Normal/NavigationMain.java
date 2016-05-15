@@ -129,6 +129,11 @@ public class NavigationMain extends AppCompatActivity
                 title = "E-Doctor";
                 viewIsAtHome = false;
                 break;
+            case R.id.nav_Setting:
+                fragment = new Settings();
+                title = "E-Doctor";
+                viewIsAtHome = false;
+                break;
 
         }
 
