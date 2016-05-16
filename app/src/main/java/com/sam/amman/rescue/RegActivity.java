@@ -32,9 +32,9 @@ public class RegActivity extends AppCompatActivity {
     String url;
     Spinner spinner;
     Button reg;
-    EditText emailEdt,passwordEdt;
+    EditText emailEdt,passwordEdt,passwordConfirm;
     String emailStr ;
-    String passwordStr;
+    String passwordStr,passwordConfirmStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +54,7 @@ public class RegActivity extends AppCompatActivity {
          */
         emailEdt = (EditText) findViewById(R.id.emailReg);
         passwordEdt = (EditText) findViewById(R.id.passwordReg);
+        passwordConfirm = (EditText) findViewById(R.id.passwordConfirm);
         reg = (Button) findViewById(R.id.BtnReg);
         db = new UserDBHandler(this);
 
@@ -63,19 +64,20 @@ public class RegActivity extends AppCompatActivity {
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //saving
-                emailStr = emailEdt.getText().toString();
-                passwordStr = passwordEdt.getText().toString();
-                spinner = (Spinner) findViewById(R.id.spinnerCountryCodes);
+            //saving
+            emailStr = emailEdt.getText().toString();
+            passwordStr = passwordEdt.getText().toString();
+            passwordConfirmStr = passwordConfirm.getText().toString();
+
+            spinner = (Spinner) findViewById(R.id.spinnerCountryCodes);
 
 
-                if("".equals(emailStr) || "".equals(passwordStr)){
 
-                    Toast.makeText(RegActivity.this, "required fields should not be empty", Toast.LENGTH_SHORT).show();
-                }else{
-
-
-                    if(ValidEmail(emailStr)){
+            if("".equals(emailStr) || "".equals(passwordStr)){
+                Toast.makeText(RegActivity.this, "required fields should not be empty", Toast.LENGTH_SHORT).show();
+            }else{
+                if(ValidEmail(emailStr)){
+                    if(passwordConfirmStr.equals(passwordStr)){
                         try {
 //                            db = new UserDBHandler(getApplication());
 //                            User user = new User();
@@ -93,11 +95,13 @@ public class RegActivity extends AppCompatActivity {
                             Log.w(" --- ", "onClick: ",e );
                             Toast.makeText(RegActivity.this, "Error", Toast.LENGTH_SHORT).show();
                         }
-                    }else{
-                        Toast.makeText(RegActivity.this, "invalid email", Toast.LENGTH_SHORT).show();
+                    }else {
+                        Toast.makeText(RegActivity.this, "password does not match", Toast.LENGTH_SHORT).show();
                     }
+                }else{
+                    Toast.makeText(RegActivity.this, "invalid email", Toast.LENGTH_SHORT).show();
                 }
-
+            }
             }
         });
 
