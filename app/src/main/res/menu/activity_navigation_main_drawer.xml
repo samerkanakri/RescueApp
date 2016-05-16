@@ -22,6 +22,14 @@
             android:id="@+id/nav_Setting"
             android:icon="@drawable/ic_menu_share"
             android:title="Settings" />
+        <item
+            android:id="@+id/nav_Doctor"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Doctor" />
+        <item
+            android:id="@+id/nav_Logout"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Log out" />
     </group>
 
 

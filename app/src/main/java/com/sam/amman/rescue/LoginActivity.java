@@ -13,7 +13,6 @@ import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.Prefs;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
-import com.sam.amman.rescue.Normal.NavigationMain;
 
 import java.util.regex.Pattern;
 

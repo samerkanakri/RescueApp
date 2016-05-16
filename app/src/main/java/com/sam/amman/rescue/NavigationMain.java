@@ -1,5 +1,6 @@
-package com.sam.amman.rescue.Normal;
+package com.sam.amman.rescue;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -17,8 +18,13 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.Toast;
 
+import com.sam.amman.rescue.Adapters.Prefs;
+import com.sam.amman.rescue.Doctor.Doctor;
 import com.sam.amman.rescue.Normal.CallDoctor;
+import com.sam.amman.rescue.Normal.EDoctor;
+import com.sam.amman.rescue.Normal.Profile;
 import com.sam.amman.rescue.Normal.RequestDrone;
+import com.sam.amman.rescue.Normal.Settings;
 import com.sam.amman.rescue.R;
 
 
@@ -133,6 +139,18 @@ public class NavigationMain extends AppCompatActivity
                 fragment = new Settings();
                 title = "E-Doctor";
                 viewIsAtHome = false;
+                break;
+            case R.id.nav_Doctor:
+                fragment = new Doctor();
+                title = "E-Doctor";
+                viewIsAtHome = false;
+                break;
+            case R.id.nav_Logout:
+                Prefs pref = new Prefs(getApplication());
+                pref.setRememberMe(false);
+                Intent intent = new Intent();
+                intent.setClass(getApplication(), LoginActivity.class);
+                startActivity(intent);
                 break;
 
         }

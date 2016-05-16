@@ -2,15 +2,11 @@ package com.sam.amman.rescue;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.view.Window;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.Prefs;
-import com.sam.amman.rescue.Normal.NavigationMain;
 
 
 public class SplashScreen extends AppCompatActivity {
