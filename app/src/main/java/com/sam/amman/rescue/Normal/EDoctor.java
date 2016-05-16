@@ -3,7 +3,6 @@ package com.sam.amman.rescue.Normal;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,15 +30,34 @@ public class EDoctor extends Fragment {
                 new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, sympSource);
         sympLst.setAdapter(sympAdapter);
 
+        final String[] datasource1={"1","2","3"};
+        final String[] datasource2={"4","5","6"};
+        final String[] datasource3={"7","8","9"};
+
+
         sympLst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
                 // CHANGE DATA SOURCE DEPENDING ON i
-
-                Fragment frg = new DiagnosesListfrag();
-                FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,frg);
-                tr.commit();
+                if(i==0){
+                    Listfrag a = new Listfrag();
+                    a.setDatasource(datasource1);
+                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,a);
+                    tr.commit();
+                }
+                if(i==1){
+                    Listfrag a = new Listfrag();
+                    a.setDatasource(datasource2);
+                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,a);
+                    tr.commit();
+                }
+                if(i==2){
+                    Listfrag a = new Listfrag();
+                    a.setDatasource(datasource3);
+                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,a);
+                    tr.commit();
+                }
             }
         });
 

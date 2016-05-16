@@ -11,6 +11,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -65,6 +66,7 @@ public class RegActivity extends AppCompatActivity {
                 //saving
                 emailStr = emailEdt.getText().toString();
                 passwordStr = passwordEdt.getText().toString();
+                spinner = (Spinner) findViewById(R.id.spinnerCountryCodes);
 
 
                 if("".equals(emailStr) || "".equals(passwordStr)){
@@ -100,7 +102,7 @@ public class RegActivity extends AppCompatActivity {
         });
 
 
-//        spinner = (Spinner) findViewById(R.id.spinner);
+
 //        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
 //                R.array.country_codes, android.R.layout.simple_spinner_item);
 //        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

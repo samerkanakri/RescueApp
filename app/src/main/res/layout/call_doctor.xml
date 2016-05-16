@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:text="Cancel"
                     android:onClick="cancel"
-                    android:id="@+id/button7" />
+                    android:id="@+id/cancelBtn" />
 
             </LinearLayout>
 

@@ -94,7 +94,8 @@
                 android:id="@+id/BtnCallDoctor"
                 android:gravity="center_vertical|center_horizontal"
                 android:textAlignment="center"
-                android:onClick="callDoctor0"/>
+                android:onClick="callDoctor0"
+                android:enabled="false" />
         </LinearLayout>
 
     </LinearLayout>

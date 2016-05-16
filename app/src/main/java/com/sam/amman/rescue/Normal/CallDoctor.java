@@ -41,6 +41,9 @@ public class CallDoctor extends Fragment {
                 new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, sympSource);
         categoriesLst.setAdapter(sympAdapter);
 
+        final String[] datasource1={"1","2","3"};
+        final String[] datasource2={"4","5","6"};
+        final String[] datasource3={"7","8","9"};
 
         categoriesLst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -49,11 +52,28 @@ public class CallDoctor extends Fragment {
                 // CHANGE DATA SOURCE DEPENDING ON i
 
                 //symptoms list
-                Fragment frg = new SymptomsListfrag();
-                FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,frg);
-                tr.commit();
+                if(i==0){
+                    Listfrag a = new Listfrag();
+                    a.setDatasource(datasource1);
+                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
+                    tr.commit();
+                }
+                if(i==1){
+                    Listfrag a = new Listfrag();
+                    a.setDatasource(datasource2);
+                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
+                    tr.commit();
+                }
+                if(i==2){
+                    Listfrag a = new Listfrag();
+                    a.setDatasource(datasource3);
+                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
+                    tr.commit();
+                }
+
             }
         });
+
 
 
         return v;
