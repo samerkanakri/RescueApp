@@ -138,5 +138,10 @@ public class User {
         this.Username = Username;
     }
 
+    public String toString(){
+
+        return getEmail() + " " + getPassword() ;
+    }
+
 
 }

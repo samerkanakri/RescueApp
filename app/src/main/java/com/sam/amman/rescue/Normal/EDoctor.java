@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.sam.amman.rescue.Adapters.Listfrag;
 import com.sam.amman.rescue.R;
 
 public class EDoctor extends Fragment {

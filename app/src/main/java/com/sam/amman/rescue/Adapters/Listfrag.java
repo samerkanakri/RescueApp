@@ -1,4 +1,4 @@
-package com.sam.amman.rescue.Normal;
+package com.sam.amman.rescue.Adapters;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

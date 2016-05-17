@@ -9,12 +9,46 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sam.amman.rescue.Doctor.Doctor">
 
-    <Button
-        android:layout_width="wrap_content"
+    <RadioGroup
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="New Button"
-        android:id="@+id/button"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="108dp" />
+        android:layout_alignParentStart="true"
+        android:weightSum="1"
+        android:id="@+id/radioGroup">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Available"
+            android:id="@+id/radioButton"
+            android:checked="false"
+            android:textColor="#2fff01"
+            android:onClick="status" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Away"
+            android:id="@+id/radioButton2"
+            android:checked="false"
+            android:textColor="#ff9c08" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OFF"
+            android:id="@+id/radioButton3"
+            android:checked="false"
+            android:textColor="#ff0000" />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:id="@+id/CaseContainer"
+        android:layout_below="@+id/radioGroup"></FrameLayout>
+
 </RelativeLayout>
