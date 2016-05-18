@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import com.sam.amman.rescue.R;
@@ -57,6 +58,8 @@ public class SympListFragAdapter extends BaseAdapter {
         return 0;
     }
 
+
+
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater)c.getSystemService
@@ -64,9 +67,9 @@ public class SympListFragAdapter extends BaseAdapter {
 
         View v=inflater.inflate(R.layout.symprow,null);
 
+
+
         ((TextView)v.findViewById(R.id.TxtCaseTitle)).setText(stringList.get(i));
-
-
 
 
         return v;

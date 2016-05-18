@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.sam.amman.rescue.Adapters.Listfrag;
 import com.sam.amman.rescue.R;
 
+import java.util.ArrayList;
 
 
 public class CallDoctor extends Fragment {

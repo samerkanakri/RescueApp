@@ -8,6 +8,7 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 
 import com.sam.amman.rescue.Adapters.SympListFragAdapter;
 import com.sam.amman.rescue.R;
@@ -28,11 +29,13 @@ public class Listfrag extends ListFragment {
         v = inflater.inflate(R.layout.symptoms_list,container,false);
 
         SympListFragAdapter ad=new SympListFragAdapter(new ArrayList<String>(), getActivity());
+
         ad.addAll(getDatasource());
         setListAdapter(ad);
 
         return v;
     }
+
 
 
     public String[] getDatasource(){
