@@ -137,12 +137,12 @@ public class NavigationMain extends AppCompatActivity
                 break;
             case R.id.nav_Setting:
                 fragment = new Settings();
-                title = "E-Doctor";
+                title = "Settings";
                 viewIsAtHome = false;
                 break;
             case R.id.nav_Doctor:
                 fragment = new Doctor();
-                title = "E-Doctor";
+                title = "Doctor";
                 viewIsAtHome = false;
                 break;
             case R.id.nav_Logout:

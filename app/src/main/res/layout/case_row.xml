@@ -6,10 +6,12 @@
     android:weightSum="1">
 
     <TextView
-        android:layout_width="89dp"
-        android:layout_height="26dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="new case"
         android:id="@+id/caseitem"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:focusable="false" />
+
 
 </LinearLayout>
