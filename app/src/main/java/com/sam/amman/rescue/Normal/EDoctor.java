@@ -26,12 +26,14 @@ public class EDoctor extends Fragment {
         sympLst = (ListView) v.findViewById(R.id.SymptomsLst);
 
         //categories list
-        String[] sympSource = {"1","2","3"};
+        String[] sympSource = {"First degree burn","2","3"};
         ArrayAdapter<String> sympAdapter =
                 new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, sympSource);
         sympLst.setAdapter(sympAdapter);
 
-        final String[] datasource1={"1","2","3"};
+        final String[] datasource1={"Swelling and redness of the injured area"
+                ,"Pain develops"
+                ,"Burned area becomes white on touch"};
         final String[] datasource2={"4","5","6"};
         final String[] datasource3={"7","8","9"};
 

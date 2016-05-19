@@ -25,15 +25,11 @@
             android:id="@+id/textView6" />
 
 
-        <ListView
-            android:layout_width="match_parent"
-            android:layout_height="144dp"
-            android:id="@+id/catLst" />
-
         <FrameLayout
             android:id="@+id/sympListFrame"
             android:layout_width="match_parent"
-            android:layout_height="150dp">
+            android:layout_height="150dp"
+            android:layout_weight="0.57">
 
         </FrameLayout>
 

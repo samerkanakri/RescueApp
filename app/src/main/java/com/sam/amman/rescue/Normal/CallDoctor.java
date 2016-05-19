@@ -37,46 +37,51 @@ public class CallDoctor extends Fragment {
         });
 
         //categories list
-        categoriesLst = (ListView) v.findViewById(R.id.catLst);
-        String[] sympSource = {"1","2","3"};
-        ArrayAdapter<String> sympAdapter =
-                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, sympSource);
-        categoriesLst.setAdapter(sympAdapter);
+//        categoriesLst = (ListView) v.findViewById(R.id.catLst);
+//        String[] sympSource = {"First degree burn","2","3"};
+//        ArrayAdapter<String> sympAdapter =
+//                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, sympSource);
+//        categoriesLst.setAdapter(sympAdapter);
 
-        final String[] datasource1={"1","2","3"};
-        final String[] datasource2={"4","5","6"};
-        final String[] datasource3={"7","8","9"};
+        final String[] datasource1={"Swelling and redness of the injured area"
+                ,"Pain develops"
+                ,"Burned area becomes white on touch"};
 
-        categoriesLst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Listfrag a = new Listfrag();
+        a.setDatasource(datasource1);
+        FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
+        tr.commit();
 
-                // CHANGE DATA SOURCE DEPENDING ON i
-
-                //symptoms list
-                if(i==0){
-                    Listfrag a = new Listfrag();
-                    a.setDatasource(datasource1);
-                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
-                    tr.commit();
-                }
-                if(i==1){
-                    Listfrag a = new Listfrag();
-                    a.setDatasource(datasource2);
-                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
-                    tr.commit();
-                }
-                if(i==2){
-                    Listfrag a = new Listfrag();
-                    a.setDatasource(datasource3);
-                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
-                    tr.commit();
-                }
-
-            }
-        });
-
-
+//        final String[] datasource2={"4","5","6"};
+//        final String[] datasource3={"7","8","9"};
+//
+//        categoriesLst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//
+//                // CHANGE DATA SOURCE DEPENDING ON i
+//
+//                //symptoms list
+//                if(i==0){
+//                    Listfrag a = new Listfrag();
+//                    a.setDatasource(datasource1);
+//                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
+//                    tr.commit();
+//                }
+//                if(i==1){
+//                    Listfrag a = new Listfrag();
+//                    a.setDatasource(datasource2);
+//                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
+//                    tr.commit();
+//                }
+//                if(i==2){
+//                    Listfrag a = new Listfrag();
+//                    a.setDatasource(datasource3);
+//                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
+//                    tr.commit();
+//                }
+//            }
+//        });
 
         return v;
     }

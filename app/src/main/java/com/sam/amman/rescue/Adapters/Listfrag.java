@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.SympListFragAdapter;
 import com.sam.amman.rescue.R;
@@ -37,6 +38,13 @@ public class Listfrag extends ListFragment {
     }
 
 
+    @Override
+    public void onListItemClick(ListView l, View v, int position, long id) {
+        super.onListItemClick(l, v, position, id);
+
+        Toast.makeText(getActivity(),"hi",Toast.LENGTH_LONG ).show();
+
+    }
 
     public String[] getDatasource(){
         return datasource;

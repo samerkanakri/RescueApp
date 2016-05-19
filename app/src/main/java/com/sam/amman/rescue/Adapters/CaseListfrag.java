@@ -1,10 +1,12 @@
 package com.sam.amman.rescue.Adapters;
 
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
+import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +52,8 @@ public class CaseListfrag extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
-        Toast.makeText(getActivity(),"hi",Toast.LENGTH_LONG).show();
+
+        Toast.makeText(getActivity(),"click",Toast.LENGTH_LONG).show();
 
 
     }
