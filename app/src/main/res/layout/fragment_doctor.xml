@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.sam.amman.rescue.Doctor.Doctor">
+    tools:context="com.sam.amman.rescue.Doctor_Fragments.Doctor">
 
     <RadioGroup
         android:layout_width="match_parent"

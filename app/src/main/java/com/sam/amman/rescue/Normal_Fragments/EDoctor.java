@@ -1,4 +1,4 @@
-package com.sam.amman.rescue.Normal;
+package com.sam.amman.rescue.Normal_Fragments;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;

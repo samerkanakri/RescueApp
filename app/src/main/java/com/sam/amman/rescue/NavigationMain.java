@@ -15,17 +15,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.CheckBox;
-import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.Prefs;
-import com.sam.amman.rescue.Doctor.Doctor;
-import com.sam.amman.rescue.Normal.CallDoctor;
-import com.sam.amman.rescue.Normal.EDoctor;
-import com.sam.amman.rescue.Normal.Profile;
-import com.sam.amman.rescue.Normal.RequestDrone;
-import com.sam.amman.rescue.Normal.Settings;
-import com.sam.amman.rescue.R;
+import com.sam.amman.rescue.Doctor_Fragments.Doctor;
+import com.sam.amman.rescue.Normal_Fragments.CallDoctor;
+import com.sam.amman.rescue.Normal_Fragments.EDoctor;
+import com.sam.amman.rescue.Normal_Fragments.Profile;
+import com.sam.amman.rescue.Normal_Fragments.RequestDrone;
+import com.sam.amman.rescue.Normal_Fragments.Settings;
 
 
 public class NavigationMain extends AppCompatActivity

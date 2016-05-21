@@ -1,4 +1,4 @@
-package com.sam.amman.rescue.Doctor;
+package com.sam.amman.rescue.Doctor_Fragments;
 
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
