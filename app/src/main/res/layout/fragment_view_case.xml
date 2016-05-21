@@ -9,12 +9,41 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.sam.amman.rescue.Doctor_Fragments.ViewCase">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="C A S E"
-        android:id="@+id/textCase"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Case Details"
+            android:id="@+id/textCase"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/namettt"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="nameTxt"
+            android:id="@+id/namettt"
+            android:layout_marginTop="87dp"
+            android:layout_below="@+id/textCase"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="passText"
+            android:id="@+id/pass"
+            android:layout_centerVertical="true"
+            android:layout_alignEnd="@+id/namettt"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
 </RelativeLayout>
