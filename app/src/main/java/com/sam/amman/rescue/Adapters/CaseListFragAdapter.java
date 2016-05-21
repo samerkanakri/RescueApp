@@ -62,7 +62,7 @@ public class CaseListFragAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater)c.getSystemService
                 (Context.LAYOUT_INFLATER_SERVICE);
 
-        View v=inflater.inflate(R.layout.case_row,null);
+        View v=inflater.inflate(R.layout.row_case_doctor,null);
 
 
         // here change the textView id from your row layout

@@ -1,21 +1,14 @@
 package com.sam.amman.rescue.Adapters;
 
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.ListFragment;
-import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Adapters.CaseListFragAdapter;
-import com.sam.amman.rescue.Adapters.SympListFragAdapter;
 import com.sam.amman.rescue.R;
 
 import java.util.ArrayList;
@@ -32,7 +25,7 @@ public class CaseListfrag extends ListFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.symptoms_list,container,false);
+        v = inflater.inflate(R.layout.frag_list_symp_call_doctor,container,false);
         symList = (ListView) v.findViewById(android.R.id.list);
         CaseListFragAdapter ad=new CaseListFragAdapter(new ArrayList<String>(), getActivity());
         // replace getDatasource() with you String arrayList

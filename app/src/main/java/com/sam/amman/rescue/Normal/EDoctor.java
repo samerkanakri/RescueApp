@@ -22,7 +22,7 @@ public class EDoctor extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v;
-        v = inflater.inflate(R.layout.edoctor,container,false);
+        v = inflater.inflate(R.layout.fragment_e_doctor,container,false);
         sympLst = (ListView) v.findViewById(R.id.SymptomsLst);
 
         //categories list

@@ -32,7 +32,7 @@ public class Doctor extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.activity_doctor,container,false);
+        v = inflater.inflate(R.layout.fragment_doctor,container,false);
 
         String datasource1[] = {"Case 1","Case 2","Case 3"};
 

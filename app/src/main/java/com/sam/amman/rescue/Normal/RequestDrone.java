@@ -21,7 +21,7 @@ public class RequestDrone extends Fragment {
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
 //        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.call_doctor);
+//        setContentView(R.layout.fragment_call_doctor);
 //
 //
 //    }
@@ -32,7 +32,7 @@ public class RequestDrone extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.request_drone,container,false);
+        v = inflater.inflate(R.layout.fragment_request_drone,container,false);
         loc = (TextView)v.findViewById(R.id.textViewLoc);
         v.findViewById(R.id.ImgBtnReqDrone).setOnClickListener(new View.OnClickListener(){
             @Override

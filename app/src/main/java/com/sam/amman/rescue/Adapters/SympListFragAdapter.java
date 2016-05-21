@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.R;
@@ -70,7 +69,7 @@ public class SympListFragAdapter extends BaseAdapter {
         LayoutInflater inflater = (LayoutInflater)c.getSystemService
                 (Context.LAYOUT_INFLATER_SERVICE);
 
-        View v=inflater.inflate(R.layout.symprow,null);
+        View v=inflater.inflate(R.layout.row_symp_call_doctor,null);
 
 
 

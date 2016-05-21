@@ -1,12 +1,9 @@
 package com.sam.amman.rescue.Normal;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +24,7 @@ public class Settings extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.setting,container,false);
+        v = inflater.inflate(R.layout.fragment_settings,container,false);
         rememberme = (Switch) v.findViewById(R.id.remembermeSwitch);
 //        pref = new Prefs(getActivity());
 //        switched = sharedPreferences.getBoolean("checked",false);

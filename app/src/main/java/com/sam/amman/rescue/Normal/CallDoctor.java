@@ -7,16 +7,12 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.Listfrag;
 import com.sam.amman.rescue.R;
-
-import java.util.ArrayList;
 
 
 public class CallDoctor extends Fragment {
@@ -31,7 +27,7 @@ public class CallDoctor extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.call_doctor,container,false);
+        v = inflater.inflate(R.layout.fragment_call_doctor,container,false);
 
         v.findViewById(R.id.BtnSendSymp).setOnClickListener(new View.OnClickListener() {
             @Override

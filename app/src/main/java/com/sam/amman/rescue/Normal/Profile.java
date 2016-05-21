@@ -1,12 +1,10 @@
 package com.sam.amman.rescue.Normal;
 
 import android.content.Context;
-import android.database.SQLException;
 import android.os.AsyncTask;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Actors.User;
-import com.sam.amman.rescue.Adapters.DBHandler;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
-import com.sam.amman.rescue.Adapters.UserDBHandler;
 import com.sam.amman.rescue.R;
 
 public class Profile extends Fragment {
@@ -31,7 +26,7 @@ public class Profile extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.activity_profile,container,false);
+        v = inflater.inflate(R.layout.fragment_profile,container,false);
 
         emailTxt = (EditText) v.findViewById(R.id.emailEdtxt);
         fnameTxt = (EditText) v.findViewById(R.id.fnameEdtxt);
