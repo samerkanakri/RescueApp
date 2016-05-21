@@ -25,7 +25,7 @@ public class CallDoctor_ListFrag extends ListFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        v = inflater.inflate(R.layout.frag_list_symp_call_doctor,container,false);
+        v = inflater.inflate(R.layout.frag_list,container,false);
         c = (CheckBox) v.findViewById(R.id.checkBoxS);
         final CallDoctor_SympListFragAdapter ad=new CallDoctor_SympListFragAdapter(new ArrayList<String>(), getActivity());
         ad.addAll(getDatasource());

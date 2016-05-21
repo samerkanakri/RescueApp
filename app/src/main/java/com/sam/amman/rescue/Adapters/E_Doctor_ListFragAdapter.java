@@ -18,12 +18,12 @@ import java.util.List;
 /**
  * Created by SAM on 4/20/2016.
  */
-public class Doctor_CaseListFragAdapter extends BaseAdapter {
+public class E_Doctor_ListFragAdapter extends BaseAdapter {
     List<String> stringList=new ArrayList<>();
     Context c;
 
     //constructor
-    public Doctor_CaseListFragAdapter(List<String> stringList, Context c) {
+    public E_Doctor_ListFragAdapter(List<String> stringList, Context c) {
         this.stringList = stringList;
         this.c = c;
     }
@@ -67,26 +67,9 @@ public class Doctor_CaseListFragAdapter extends BaseAdapter {
 
         View v=inflater.inflate(R.layout.row_only_text,null);
 
-
-        // here change the textView id from your row layout
-
         TextView t = (TextView) v.findViewById(R.id.caseitem);
 
         t.setText(stringList.get(i));
-        t.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(c,"I am a case item " + i,Toast.LENGTH_SHORT).show();
-
-                Intent intent = new Intent();
-                intent.setClass(c, ViewCase.class);
-                intent.putExtra("CID",(i+1));
-                c.startActivity(intent);
-            }
-        });
-
-
-
 
         return v;
     }

@@ -1,5 +1,6 @@
 package com.sam.amman.rescue.Doctor_Fragments;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.FragmentTransaction;
@@ -7,12 +8,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.Actors.User;
 import com.sam.amman.rescue.Adapters.Doctor_CaseListFrag;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
+import com.sam.amman.rescue.NavigationMain;
 import com.sam.amman.rescue.R;
 
 import org.json.JSONArray;
@@ -30,6 +33,8 @@ public class ViewCase extends AppCompatActivity {
     ArrayList<String> usersLst;
     int cid;
     TextView name , pass;
+    Button respondeBtn , rejectBtn ,kak;
+    Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +42,12 @@ public class ViewCase extends AppCompatActivity {
         name = (TextView) findViewById(R.id.namettt);
         pass = (TextView) findViewById(R.id.pass);
 
+        respondeBtn = (Button) findViewById(R.id.respondeBtnn);
+        rejectBtn = (Button) findViewById(R.id.rejectBtn);
+        kak = (Button) findViewById(R.id.kkkkkkkkk);
+
+
+        //get CID from prev activity
         Intent i = getIntent();
         cid = i.getIntExtra("CID",-1);
 
@@ -48,6 +59,32 @@ public class ViewCase extends AppCompatActivity {
             Toast.makeText(this,"Case " + cid + " is loading",Toast.LENGTH_SHORT).show();
             loadCase.execute();
         }
+
+        respondeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(context, CaseResponde.class);
+                context.startActivity(intent);
+            }
+        });
+
+        rejectBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context, "this item will be deleted from the list", Toast.LENGTH_SHORT).show();
+                ViewCase.this.finish();
+            }
+        });
+
+        kak.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent();
+                intent.setClass(context, CaseResponde.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     class LoadCase extends AsyncTask<Void,Void,Void> {

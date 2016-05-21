@@ -7,10 +7,11 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="45dp"
         android:text="new case"
         android:id="@+id/caseitem"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_vertical"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:focusable="false"
         android:clickable="true"
         android:focusableInTouchMode="false"/>

@@ -45,5 +45,34 @@
             android:layout_centerVertical="true"
             android:layout_alignEnd="@+id/namettt"
             android:layout_gravity="center_horizontal" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:gravity="center_horizontal|center_vertical">
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Responde"
+                android:id="@+id/respondeBtnn"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="Reject"
+                android:id="@+id/rejectBtn" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Button"
+            android:id="@+id/kkkkkkkkk"
+            android:layout_gravity="center_horizontal" />
     </LinearLayout>
 </RelativeLayout>

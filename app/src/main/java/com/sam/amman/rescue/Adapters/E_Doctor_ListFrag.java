@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.sam.amman.rescue.R;
 
@@ -16,7 +15,7 @@ import java.util.ArrayList;
 /**
  * Created by SAM on 4/26/2016.
  */
-public class Doctor_CaseListFrag extends ListFragment {
+public class E_Doctor_ListFrag extends ListFragment {
 
     View v;
 //    String [] datasource;
@@ -27,7 +26,7 @@ public class Doctor_CaseListFrag extends ListFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.frag_list,container,false);
         symList = (ListView) v.findViewById(android.R.id.list);
-        Doctor_CaseListFragAdapter ad=new Doctor_CaseListFragAdapter(new ArrayList<String>(), getActivity());
+        E_Doctor_ListFragAdapter ad=new E_Doctor_ListFragAdapter(new ArrayList<String>(), getActivity());
         // replace getDatasource() with you String arrayList
         ad.addAll(getDatasource());
         setListAdapter(ad);

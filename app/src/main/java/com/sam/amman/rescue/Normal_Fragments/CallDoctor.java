@@ -36,8 +36,6 @@ public class CallDoctor extends Fragment {
             }
         });
 
-
-
         CallDoctor_ListFrag a = new CallDoctor_ListFrag();
         a.setDatasource(datasource1);
         FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
