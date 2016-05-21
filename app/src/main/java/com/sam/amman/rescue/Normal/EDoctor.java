@@ -41,7 +41,6 @@ public class EDoctor extends Fragment {
         sympLst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
                 // CHANGE DATA SOURCE DEPENDING ON i
                 if(i==0){
                     Listfrag a = new Listfrag();

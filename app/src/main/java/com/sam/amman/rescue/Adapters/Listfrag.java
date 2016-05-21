@@ -8,6 +8,8 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -23,26 +25,25 @@ public class Listfrag extends ListFragment {
 
     View v;
     String [] datasource;
-
+    CheckBox c;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.symptoms_list,container,false);
-
-        SympListFragAdapter ad=new SympListFragAdapter(new ArrayList<String>(), getActivity());
-
+        c = (CheckBox) v.findViewById(R.id.checkBoxS);
+        final SympListFragAdapter ad=new SympListFragAdapter(new ArrayList<String>(), getActivity());
         ad.addAll(getDatasource());
         setListAdapter(ad);
+//
 
         return v;
     }
-
 
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
 
-        Toast.makeText(getActivity(),"hi",Toast.LENGTH_LONG ).show();
+            Toast.makeText(getActivity(),"hi from row",Toast.LENGTH_LONG ).show();
 
     }
 

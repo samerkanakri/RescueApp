@@ -24,6 +24,10 @@ public class CallDoctor extends Fragment {
     ListView categoriesLst;
     Button BtnSendSymp;
     View v;
+    final String[] datasource1={"Swelling and redness of the injured area"
+            ,"Pain develops"
+            ,"Burned area becomes white on touch"};
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,6 +40,13 @@ public class CallDoctor extends Fragment {
             }
         });
 
+
+
+        Listfrag a = new Listfrag();
+        a.setDatasource(datasource1);
+        FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
+        tr.commit();
+
         //categories list
 //        categoriesLst = (ListView) v.findViewById(R.id.catLst);
 //        String[] sympSource = {"First degree burn","2","3"};
@@ -43,14 +54,6 @@ public class CallDoctor extends Fragment {
 //                new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, sympSource);
 //        categoriesLst.setAdapter(sympAdapter);
 
-        final String[] datasource1={"Swelling and redness of the injured area"
-                ,"Pain develops"
-                ,"Burned area becomes white on touch"};
-
-        Listfrag a = new Listfrag();
-        a.setDatasource(datasource1);
-        FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
-        tr.commit();
 
 //        final String[] datasource2={"4","5","6"};
 //        final String[] datasource3={"7","8","9"};

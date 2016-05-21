@@ -6,7 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sam.amman.rescue.R;
 
@@ -19,6 +21,9 @@ import java.util.List;
 public class SympListFragAdapter extends BaseAdapter {
     List<String> stringList=new ArrayList<>();
     Context c;
+    Boolean selected = true;
+
+
 
     //constructor
     public SympListFragAdapter(List<String> stringList, Context c) {
@@ -61,7 +66,7 @@ public class SympListFragAdapter extends BaseAdapter {
 
 
     @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
+    public View getView(final int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater)c.getSystemService
                 (Context.LAYOUT_INFLATER_SERVICE);
 
@@ -69,9 +74,33 @@ public class SympListFragAdapter extends BaseAdapter {
 
 
 
-        ((TextView)v.findViewById(R.id.TxtCaseTitle)).setText(stringList.get(i));
+        //((TextView)v.findViewById(R.id.TxtCaseTitle)).setText(stringList.get(i));
+//        ((CheckBox)v.findViewById(R.id.checkBoxS)).setChecked(false);
+        final CheckBox cb = (CheckBox) v.findViewById(R.id.checkBoxS);
+        cb.setText(stringList.get(i));
 
+        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b)
+                    Toast.makeText(c,"checked >> " + i ,Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(c,"Unchecked >> " + i ,Toast.LENGTH_SHORT).show();
+
+            }
+
+        });
 
         return v;
     }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
+    }
+
+    public Boolean getSelected() {
+        return selected;
+    }
+
+
 }
