@@ -1,33 +1,25 @@
 package com.sam.amman.rescue;
 
-import android.drm.DrmStore;
 import android.os.AsyncTask;
-import android.os.PersistableBundle;
-import android.support.v4.app.NavUtils;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Actors.User;
-import com.sam.amman.rescue.Adapters.DBHandler;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
-import com.sam.amman.rescue.Adapters.UserDBHandler;
+import com.sam.amman.rescue.Adapters.Local_UserDB_Handler;
 
 import java.util.regex.Pattern;
 
 public class RegActivity extends AppCompatActivity {
 
 
-    UserDBHandler db;
+    Local_UserDB_Handler db;
     String response;
     String url;
     Spinner spinner;
@@ -56,7 +48,7 @@ public class RegActivity extends AppCompatActivity {
         passwordEdt = (EditText) findViewById(R.id.passwordReg);
         passwordConfirm = (EditText) findViewById(R.id.passwordConfirm);
         reg = (Button) findViewById(R.id.BtnReg);
-        db = new UserDBHandler(this);
+        db = new Local_UserDB_Handler(this);
 
         /**
          * registration button
@@ -79,7 +71,7 @@ public class RegActivity extends AppCompatActivity {
                 if(ValidEmail(emailStr)){
                     if(passwordConfirmStr.equals(passwordStr)){
                         try {
-//                            db = new UserDBHandler(getApplication());
+//                            db = new Local_UserDB_Handler(getApplication());
 //                            User user = new User();
 //                            user.setEmail(emailStr);
 //                            user.setPassword(passwordStr);

@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Adapters.Prefs;
+import com.sam.amman.rescue.Adapters.Preferences;
 
 
 public class SplashScreen extends AppCompatActivity {
@@ -36,7 +36,7 @@ public class SplashScreen extends AppCompatActivity {
         /**
          * get preferences
          */
-        Prefs pref = new Prefs(this);
+        Preferences pref = new Preferences(this);
         if(pref.getRemmeber()){
             Toast.makeText(getApplication(), "i remember you", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(SplashScreen.this,NavigationMain.class);

@@ -13,7 +13,7 @@ import com.sam.amman.rescue.Actors.User;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DBHandler extends SQLiteOpenHelper {
+public class LocalDB_Handler extends SQLiteOpenHelper {
 
 	//version
 	protected static final int DATABASE_VERSION = 1;
@@ -68,7 +68,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
 
 	//constructor
-	public DBHandler(Context context) {
+	public LocalDB_Handler(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 	}
 

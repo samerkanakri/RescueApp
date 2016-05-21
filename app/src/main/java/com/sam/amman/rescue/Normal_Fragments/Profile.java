@@ -35,7 +35,7 @@ public class Profile extends Fragment {
 
         //get current user data
 //        try {
-//            UserDBHandler db = new UserDBHandler(context);
+//            Local_UserDB_Handler db = new Local_UserDB_Handler(context);
 //            User user;
 //            String email = "";
 //            user = db.getUser(email);  // using current user EMAIL

@@ -12,6 +12,7 @@
         android:id="@+id/caseitem"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:focusable="false"
+        android:clickable="true"
         android:focusableInTouchMode="false"/>
 
 

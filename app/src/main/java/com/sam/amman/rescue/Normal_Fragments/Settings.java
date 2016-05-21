@@ -10,14 +10,14 @@ import android.view.ViewGroup;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 
-import com.sam.amman.rescue.Adapters.Prefs;
+import com.sam.amman.rescue.Adapters.Preferences;
 import com.sam.amman.rescue.R;
 
 public class Settings extends Fragment {
 
     View v;
     Switch rememberme;
-    Prefs pref;
+    Preferences pref;
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     Boolean switched;
@@ -26,7 +26,7 @@ public class Settings extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_settings,container,false);
         rememberme = (Switch) v.findViewById(R.id.remembermeSwitch);
-//        pref = new Prefs(getActivity());
+//        pref = new Preferences(getActivity());
 //        switched = sharedPreferences.getBoolean("checked",false);
 //        rememberme.setChecked(switched);
 //        rememberme.setChecked(sharedPreferences.getBoolean("checked",false));
@@ -36,10 +36,10 @@ public class Settings extends Fragment {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean checked) {
                 if(checked){
-                    Prefs pref = new Prefs(getActivity());
+                    Preferences pref = new Preferences(getActivity());
                     pref.setRememberMe(true);
                 }else{
-                    Prefs pref = new Prefs(getActivity());
+                    Preferences pref = new Preferences(getActivity());
                     pref.setRememberMe(false);
                 }
             }

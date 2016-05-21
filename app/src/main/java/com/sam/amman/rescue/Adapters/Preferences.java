@@ -11,7 +11,7 @@ import com.sam.amman.rescue.R;
 /**
  * Created by SAM on 5/10/2016.
  */
-public class Prefs extends PreferenceActivity {
+public class Preferences extends PreferenceActivity {
 
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
@@ -26,7 +26,7 @@ public class Prefs extends PreferenceActivity {
 
     }
 
-    public Prefs(Context context) {
+    public Preferences(Context context) {
         this.context = context;
         sharedPreferences = context.getSharedPreferences(context.getPackageName(), context.MODE_PRIVATE);
         editor = sharedPreferences.edit();

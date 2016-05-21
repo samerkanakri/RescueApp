@@ -11,8 +11,8 @@ import com.sam.amman.rescue.Actors.User;
 /**
  * Created by SAM on 5/8/2016.
  */
-public class UserDBHandler extends DBHandler {
-    public UserDBHandler(Context context) {
+public class Local_UserDB_Handler extends LocalDB_Handler {
+    public Local_UserDB_Handler(Context context) {
         super(context);
     }
 

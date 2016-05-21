@@ -11,7 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.sam.amman.rescue.Adapters.Listfrag;
+import com.sam.amman.rescue.Adapters.CallDoctor_ListFrag;
 import com.sam.amman.rescue.R;
 
 public class EDoctor extends Fragment {
@@ -43,19 +43,19 @@ public class EDoctor extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 // CHANGE DATA SOURCE DEPENDING ON i
                 if(i==0){
-                    Listfrag a = new Listfrag();
+                    CallDoctor_ListFrag a = new CallDoctor_ListFrag();
                     a.setDatasource(datasource1);
                     FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,a);
                     tr.commit();
                 }
                 if(i==1){
-                    Listfrag a = new Listfrag();
+                    CallDoctor_ListFrag a = new CallDoctor_ListFrag();
                     a.setDatasource(datasource2);
                     FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,a);
                     tr.commit();
                 }
                 if(i==2){
-                    Listfrag a = new Listfrag();
+                    CallDoctor_ListFrag a = new CallDoctor_ListFrag();
                     a.setDatasource(datasource3);
                     FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.DiagnosesContainer,a);
                     tr.commit();

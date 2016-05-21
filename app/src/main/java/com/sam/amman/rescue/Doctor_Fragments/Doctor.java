@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.sam.amman.rescue.Actors.User;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
-import com.sam.amman.rescue.Adapters.CaseListfrag;
+import com.sam.amman.rescue.Adapters.Doctor_CaseListFrag;
 import com.sam.amman.rescue.R;
 
 import org.json.JSONArray;
@@ -90,7 +90,7 @@ public class Doctor extends Fragment {
             }
 
             dataSource = usersLst;
-            CaseListfrag a = new CaseListfrag();
+            Doctor_CaseListFrag a = new Doctor_CaseListFrag();
             a.setDatasource(usersLst);
             FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.CaseContainer,a);
             tr.commit();

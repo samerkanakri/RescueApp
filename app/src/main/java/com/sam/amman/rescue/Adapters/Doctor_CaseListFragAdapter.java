@@ -5,8 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.R;
@@ -17,21 +16,18 @@ import java.util.List;
 /**
  * Created by SAM on 4/20/2016.
  */
-public class SympListFragAdapter extends BaseAdapter {
+public class Doctor_CaseListFragAdapter extends BaseAdapter {
     List<String> stringList=new ArrayList<>();
     Context c;
-    Boolean selected = true;
-
-
 
     //constructor
-    public SympListFragAdapter(List<String> stringList, Context c) {
+    public Doctor_CaseListFragAdapter(List<String> stringList, Context c) {
         this.stringList = stringList;
         this.c = c;
     }
 
     //add list of items
-    public void addAll(String[] items){
+    public void addAll(ArrayList<String> items){
         for (String i:items){
             stringList.add(i);
         }
@@ -62,44 +58,29 @@ public class SympListFragAdapter extends BaseAdapter {
         return 0;
     }
 
-
-
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater)c.getSystemService
                 (Context.LAYOUT_INFLATER_SERVICE);
 
-        View v=inflater.inflate(R.layout.row_symp_call_doctor,null);
+        View v=inflater.inflate(R.layout.row_case_doctor,null);
 
 
+        // here change the textView id from your row layout
 
-        //((TextView)v.findViewById(R.id.TxtCaseTitle)).setText(stringList.get(i));
-//        ((CheckBox)v.findViewById(R.id.checkBoxS)).setChecked(false);
-        final CheckBox cb = (CheckBox) v.findViewById(R.id.checkBoxS);
-        cb.setText(stringList.get(i));
+        TextView t = (TextView) v.findViewById(R.id.caseitem);
 
-        cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        t.setText(stringList.get(i));
+        t.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b)
-                    Toast.makeText(c,"checked >> " + i ,Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(c,"Unchecked >> " + i ,Toast.LENGTH_SHORT).show();
-
+            public void onClick(View view) {
+                Toast.makeText(c,"I am a case item " + i,Toast.LENGTH_SHORT).show();
             }
-
         });
+
+
+
 
         return v;
     }
-
-    public void setSelected(Boolean selected) {
-        this.selected = selected;
-    }
-
-    public Boolean getSelected() {
-        return selected;
-    }
-
-
 }

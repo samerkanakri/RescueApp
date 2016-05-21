@@ -11,7 +11,7 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Adapters.Prefs;
+import com.sam.amman.rescue.Adapters.Preferences;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
 
 import java.util.regex.Pattern;
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if(b){
-                    Prefs pref = new Prefs(getApplication());
+                    Preferences pref = new Preferences(getApplication());
                     pref.setRememberMe(true);
                     Toast.makeText(getApplication(), "preference set", Toast.LENGTH_SHORT).show();
                 }else{
@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void Login(View view){
-        //UserDBHandler db = new UserDBHandler(getApplication());
+        //Local_UserDB_Handler db = new Local_UserDB_Handler(getApplication());
         emailtosend = emailTxt.getText().toString();
         passwordtosend = passwordTxt.getText().toString();
 

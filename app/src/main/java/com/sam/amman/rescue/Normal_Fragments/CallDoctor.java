@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Adapters.Listfrag;
+import com.sam.amman.rescue.Adapters.CallDoctor_ListFrag;
 import com.sam.amman.rescue.R;
 
 
@@ -38,7 +38,7 @@ public class CallDoctor extends Fragment {
 
 
 
-        Listfrag a = new Listfrag();
+        CallDoctor_ListFrag a = new CallDoctor_ListFrag();
         a.setDatasource(datasource1);
         FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
         tr.commit();
@@ -62,19 +62,19 @@ public class CallDoctor extends Fragment {
 //
 //                //symptoms list
 //                if(i==0){
-//                    Listfrag a = new Listfrag();
+//                    CallDoctor_ListFrag a = new CallDoctor_ListFrag();
 //                    a.setDatasource(datasource1);
 //                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
 //                    tr.commit();
 //                }
 //                if(i==1){
-//                    Listfrag a = new Listfrag();
+//                    CallDoctor_ListFrag a = new CallDoctor_ListFrag();
 //                    a.setDatasource(datasource2);
 //                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
 //                    tr.commit();
 //                }
 //                if(i==2){
-//                    Listfrag a = new Listfrag();
+//                    CallDoctor_ListFrag a = new CallDoctor_ListFrag();
 //                    a.setDatasource(datasource3);
 //                    FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
 //                    tr.commit();

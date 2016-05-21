@@ -6,7 +6,6 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -17,37 +16,39 @@ import java.util.ArrayList;
 /**
  * Created by SAM on 4/26/2016.
  */
-public class Listfrag extends ListFragment {
+public class Doctor_CaseListFrag extends ListFragment {
 
     View v;
-    String [] datasource;
-    CheckBox c;
+//    String [] datasource;
+    ArrayList<String> datasource;
+    ListView symList;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.frag_list_symp_call_doctor,container,false);
-        c = (CheckBox) v.findViewById(R.id.checkBoxS);
-        final SympListFragAdapter ad=new SympListFragAdapter(new ArrayList<String>(), getActivity());
+        symList = (ListView) v.findViewById(android.R.id.list);
+        Doctor_CaseListFragAdapter ad=new Doctor_CaseListFragAdapter(new ArrayList<String>(), getActivity());
+        // replace getDatasource() with you String arrayList
         ad.addAll(getDatasource());
         setListAdapter(ad);
-//
+
+//        symList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Toast.makeText(getActivity(),"hi",Toast.LENGTH_LONG).show();
+//            }
+//        });
 
         return v;
     }
 
-    @Override
-    public void onListItemClick(ListView l, View v, int position, long id) {
-        super.onListItemClick(l, v, position, id);
 
-            Toast.makeText(getActivity(),"hi from row",Toast.LENGTH_LONG ).show();
 
-    }
-
-    public String[] getDatasource(){
+    public ArrayList<String> getDatasource(){
         return datasource;
     }
 
-    public void setDatasource(String[] datasource){
+    public void setDatasource(ArrayList<String> datasource){
         this.datasource=datasource;
     }
 

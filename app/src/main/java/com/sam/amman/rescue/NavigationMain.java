@@ -16,7 +16,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.sam.amman.rescue.Adapters.Prefs;
+import com.sam.amman.rescue.Adapters.Preferences;
 import com.sam.amman.rescue.Doctor_Fragments.Doctor;
 import com.sam.amman.rescue.Normal_Fragments.CallDoctor;
 import com.sam.amman.rescue.Normal_Fragments.EDoctor;
@@ -143,7 +143,7 @@ public class NavigationMain extends AppCompatActivity
                 viewIsAtHome = false;
                 break;
             case R.id.nav_Logout:
-                Prefs pref = new Prefs(getApplication());
+                Preferences pref = new Preferences(getApplication());
                 pref.setRememberMe(false);
                 Intent intent = new Intent();
                 intent.setClass(getApplication(), LoginActivity.class);
