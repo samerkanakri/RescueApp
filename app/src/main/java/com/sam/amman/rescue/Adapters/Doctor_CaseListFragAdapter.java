@@ -1,6 +1,9 @@
 package com.sam.amman.rescue.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +11,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sam.amman.rescue.Doctor_Fragments.ViewCase;
+import com.sam.amman.rescue.NavigationMain;
 import com.sam.amman.rescue.R;
 
 import java.util.ArrayList;
@@ -75,6 +80,11 @@ public class Doctor_CaseListFragAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
                 Toast.makeText(c,"I am a case item " + i,Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent();
+                intent.setClass(c, ViewCase.class);
+                intent.putExtra("CID",(i+1));
+                c.startActivity(intent);
             }
         });
 

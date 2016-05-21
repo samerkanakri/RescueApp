@@ -95,6 +95,8 @@ public class Doctor extends Fragment {
             FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.CaseContainer,a);
             tr.commit();
 
+
+
         }
     }
 }

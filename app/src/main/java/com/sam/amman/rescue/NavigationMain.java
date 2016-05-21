@@ -18,6 +18,7 @@ import android.view.MenuItem;
 
 import com.sam.amman.rescue.Adapters.Preferences;
 import com.sam.amman.rescue.Doctor_Fragments.Doctor;
+import com.sam.amman.rescue.Doctor_Fragments.ViewCase;
 import com.sam.amman.rescue.Normal_Fragments.CallDoctor;
 import com.sam.amman.rescue.Normal_Fragments.EDoctor;
 import com.sam.amman.rescue.Normal_Fragments.Profile;
@@ -150,6 +151,7 @@ public class NavigationMain extends AppCompatActivity
                 startActivity(intent);
                 break;
 
+
         }
 
         if (fragment != null) {
@@ -195,6 +197,8 @@ public class NavigationMain extends AppCompatActivity
 
         return true;
     }
+
+
 
 
 }
