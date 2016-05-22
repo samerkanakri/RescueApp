@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.sam.amman.rescue.Actors.User;
 import com.sam.amman.rescue.Adapters.Doctor_CaseListFrag;
+import com.sam.amman.rescue.Adapters.Preferences;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
 import com.sam.amman.rescue.NavigationMain;
 import com.sam.amman.rescue.R;
@@ -32,19 +33,18 @@ public class ViewCase extends AppCompatActivity {
     ServiceHandler serviceHandler;
     ArrayList<String> usersLst;
     int cid;
-    TextView name , pass;
-    Button respondeBtn , rejectBtn ,kak;
+    TextView name ;
+    Button respondeBtn , rejectBtn ;
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_view_case);
         name = (TextView) findViewById(R.id.namettt);
-        pass = (TextView) findViewById(R.id.pass);
+
 
         respondeBtn = (Button) findViewById(R.id.respondeBtnn);
         rejectBtn = (Button) findViewById(R.id.rejectBtn);
-        kak = (Button) findViewById(R.id.kkkkkkkkk);
 
 
         //get CID from prev activity
@@ -77,15 +77,10 @@ public class ViewCase extends AppCompatActivity {
             }
         });
 
-        kak.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(context, CaseResponde.class);
-                context.startActivity(intent);
-            }
-        });
+
     }
+
+
 
     class LoadCase extends AsyncTask<Void,Void,Void> {
 
@@ -139,7 +134,6 @@ public class ViewCase extends AppCompatActivity {
             }
 
             name.setText(user.getEmail());
-            pass.setText(user.getPassword());
 
             //DISPLAY YOU INFO
 
