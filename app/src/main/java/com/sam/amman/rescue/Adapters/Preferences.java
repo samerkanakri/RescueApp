@@ -46,6 +46,7 @@ public class Preferences extends PreferenceActivity {
 
     public void setEmail(String e) {
         editor.putString("email", e);
+        editor.commit();
     }
 
     public String getEmail() {
@@ -54,10 +55,20 @@ public class Preferences extends PreferenceActivity {
 
     public void setpassword(String p) {
         editor.putString("password", p);
+        editor.commit();
     }
 
     public String getpassword() {
         return sharedPreferences.getString("password", "empty");
+    }
+
+    public void setUID_OfCase(int uid) {
+        editor.putInt("UID_OfCase", uid);
+        editor.commit();
+    }
+
+    public int getUID_OfCase() {
+        return sharedPreferences.getInt("UID_OfCase", -1);
     }
 
 }

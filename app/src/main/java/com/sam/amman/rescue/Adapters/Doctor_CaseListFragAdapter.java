@@ -22,6 +22,8 @@ public class Doctor_CaseListFragAdapter extends BaseAdapter {
     List<String> stringList=new ArrayList<>();
     Context c;
 
+
+
     //constructor
     public Doctor_CaseListFragAdapter(List<String> stringList, Context c) {
         this.stringList = stringList;
@@ -60,6 +62,9 @@ public class Doctor_CaseListFragAdapter extends BaseAdapter {
         return 0;
     }
 
+
+
+
     @Override
     public View getView(final int i, View view, ViewGroup viewGroup) {
         LayoutInflater inflater = (LayoutInflater)c.getSystemService
@@ -76,11 +81,16 @@ public class Doctor_CaseListFragAdapter extends BaseAdapter {
         t.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(c,"I am a case item " + i,Toast.LENGTH_SHORT).show();
+                Toast.makeText(c,"I am a case item " + (i+1),Toast.LENGTH_SHORT).show();
+
+                Preferences pref = new Preferences(c);
+                int uid = pref.getUID_OfCase();
+                Toast.makeText(c,"user id " + (uid),Toast.LENGTH_SHORT).show();
+
 
                 Intent intent = new Intent();
                 intent.setClass(c, ViewCase.class);
-                intent.putExtra("CID",(i+1));
+                intent.putExtra("CID",(uid));
                 c.startActivity(intent);
             }
         });

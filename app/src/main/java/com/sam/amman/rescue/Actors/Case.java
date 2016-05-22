@@ -3,6 +3,7 @@ package com.sam.amman.rescue.Actors;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.StringTokenizer;
 
 /**
  * Created by SAM on 4/20/2016.
@@ -10,12 +11,14 @@ import java.util.Date;
 public class Case {
 
     private int CID;
-    private Time time;
+    private int UID;
+    private String time;
+    String Location ;
     private java.util.Date Date;
     ArrayList<String> sypptoms;
 
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
@@ -31,13 +34,21 @@ public class Case {
         this.sypptoms = sypptoms;
     }
 
+    public void setLocation(String location) {
+        Location = location;
+    }
+
+    public void setUID(int UID) {
+        this.UID = UID;
+    }
+
 
 
     public int getCID() {
         return CID;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
@@ -49,4 +60,15 @@ public class Case {
         return sypptoms;
     }
 
+    public String getLocation() {
+        return Location;
+    }
+
+    public int getUID() {
+        return UID;
+    }
+
+    public String toString(){
+        return "User : " + getCID() + "\nTime : " + getTime() + "\nLocation : " + getLocation() ;
+    }
 }
