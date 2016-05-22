@@ -60,27 +60,21 @@ public class ViewCase extends AppCompatActivity {
             loadCase.execute();
         }
 
-        respondeBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent();
-                intent.setClass(context, CaseResponde.class);
-                context.startActivity(intent);
-            }
-        });
-
-        rejectBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "this item will be deleted from the list", Toast.LENGTH_SHORT).show();
-                ViewCase.this.finish();
-            }
-        });
 
 
     }
 
+    public void respondToCase(View view){
+        Intent intent = new Intent();
+        intent.setClass(context, CaseResponde.class);
+        context.startActivity(intent);
+    }
 
+
+    public void rejectCase(View view){
+        Toast.makeText(context, "this item will be deleted from the list", Toast.LENGTH_SHORT).show();
+        ViewCase.this.finish();
+    }
 
     class LoadCase extends AsyncTask<Void,Void,Void> {
 
