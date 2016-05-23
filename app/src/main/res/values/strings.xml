@@ -7,9 +7,9 @@
 
     <string name="action_settings">Settings</string>
     <string-array name="country_codes">
-        <item>+962 jordan</item>
-        <item>+966 saudi arabia</item>
-        <item>+963 syria</item>
+        <item>00962</item>
+        <item>00966</item>
+        <item>00963</item>
     </string-array>
 
     <string name="preference_username">username</string>

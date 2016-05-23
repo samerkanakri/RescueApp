@@ -6,9 +6,11 @@ import java.util.Date;
  * Created by SAM on 4/20/2016.
  */
 public class User {
-    private String Username, FirstName, LastName, Password, Email, Phone, Address, BlodSample, Gender;
+
+
+    int UID;
+    private String Username, FirstName, LastName, Password, Email, Phone, Address, Blood, Sex;
     private Date DoB ;
-    // UID incremental
 
     /**
      * REGISTRATION TEST CONSTRUCTOR
@@ -49,8 +51,8 @@ public class User {
 //        this.Email = Email;
 //        this.Phone = Phone;
 //        this.Address = Address;
-//        this.BlodSample = BloodSample;
-//        this.Gender = Gender;
+//        this.Blood = BloodSample;
+//        this.Sex = Sex;
 //        this.DoB = DoB;
     }
 
@@ -66,12 +68,12 @@ public class User {
         this.Address = Address;
     }
 
-    public String getBlodSample() {
-        return BlodSample;
+    public String getBlood() {
+        return Blood;
     }
 
-    public void setBlodSample(String BlodSample) {
-        this.BlodSample = BlodSample;
+    public void setBlood(String BlodSample) {
+        this.Blood = BlodSample;
     }
 
     public Date getDoB() {
@@ -98,12 +100,12 @@ public class User {
         this.FirstName = FirstName;
     }
 
-    public String getGender() {
-        return Gender;
+    public String getSex() {
+        return Sex;
     }
 
-    public void setGender(String Gender) {
-        this.Gender = Gender;
+    public void setSex(String Gender) {
+        this.Sex = Gender;
     }
 
     public String getLastName() {
@@ -136,6 +138,14 @@ public class User {
 
     public void setUsername(String Username) {
         this.Username = Username;
+    }
+
+    public void setUID(int UID) {
+        this.UID = UID;
+    }
+
+    public int getUID() {
+        return UID;
     }
 
     public String toString(){

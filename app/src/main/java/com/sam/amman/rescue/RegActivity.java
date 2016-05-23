@@ -1,12 +1,12 @@
 package com.sam.amman.rescue;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -25,8 +25,8 @@ public class RegActivity extends AppCompatActivity {
     String url;
     Spinner spinner;
     Button reg;
-    EditText emailEdt,passwordEdt,passwordConfirm;
-    String emailStr ;
+    EditText fnameEdt,lnameEdt, phoneEdt,emailEdt,passwordEdt,passwordConfirm;
+    String emailStr ,fnamStr,lnameStr,phoneStr,CountryCodeStr;
     String passwordStr,passwordConfirmStr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,11 +45,18 @@ public class RegActivity extends AppCompatActivity {
         /**
          * VIEWS
          */
+        fnameEdt = (EditText) findViewById(R.id.Fname);
+        lnameEdt = (EditText) findViewById(R.id.Lname);
+        phoneEdt = (EditText) findViewById(R.id.Pnumber);
         emailEdt = (EditText) findViewById(R.id.emailReg);
         passwordEdt = (EditText) findViewById(R.id.passwordReg);
         passwordConfirm = (EditText) findViewById(R.id.passwordConfirm);
+
+        spinner = (Spinner) findViewById(R.id.spinnerCountryCodes);
+
         reg = (Button) findViewById(R.id.BtnReg);
-        db = new Local_UserDB_Handler(this);
+
+        //db = new Local_UserDB_Handler(this);
 
         /**
          * registration button
@@ -57,12 +64,16 @@ public class RegActivity extends AppCompatActivity {
         reg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            //saving
-            emailStr = emailEdt.getText().toString();
-            passwordStr = passwordEdt.getText().toString();
-            passwordConfirmStr = passwordConfirm.getText().toString();
+                //saving
+                fnamStr = fnameEdt.getText().toString();
+                lnameStr = lnameEdt.getText().toString();
+                phoneStr = phoneEdt.getText().toString();
+                emailStr = emailEdt.getText().toString();
+                passwordStr = passwordEdt.getText().toString();
+                passwordConfirmStr = passwordConfirm.getText().toString();
+                CountryCodeStr = spinner.getSelectedItem().toString();
+                phoneStr = CountryCodeStr + phoneStr;
 
-            spinner = (Spinner) findViewById(R.id.spinnerCountryCodes);
 
 
 
@@ -142,10 +153,10 @@ public class RegActivity extends AppCompatActivity {
 
             try {
 
-                //?TODO=login&email="+"user9@email.com"+"&password="+"password9
                 url = "http://rescueproject2016.netne.net/myPHP/register.php";
 //                response = serviceHandler.POSTJSON("http://rescueproject2016.netne.net/myPHP/post.php","samer","");
-                response = serviceHandler.RegisterOnService(url,emailStr,passwordStr);
+
+                response = serviceHandler.RegisterOnService(url,emailStr,passwordStr,fnamStr,lnameStr,phoneStr);
             }catch (Exception e){
                 Toast.makeText(RegActivity.this, e.toString(), Toast.LENGTH_SHORT).show();
             }

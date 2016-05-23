@@ -21,21 +21,6 @@
             android:layout_height="20dp"
             android:layout_gravity="center_horizontal" />
 
-        <Button
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="Sign up with google+"
-            android:id="@+id/button3"
-            android:layout_gravity="center_horizontal" />
-
-
-
-        <Button
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:text="Sign up with facebook"
-            android:id="@+id/button4"
-            android:layout_gravity="center_horizontal" />
 
         <Space
             android:layout_width="match_parent"
@@ -44,7 +29,7 @@
 
         <EditText
 
-            android:layout_width="200dp"
+            android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:id="@+id/Fname"
             android:layout_gravity="center_horizontal"
@@ -52,7 +37,7 @@
             android:singleLine="true" />
 
         <EditText
-            android:layout_width="200dp"
+            android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:id="@+id/Lname"
             android:layout_gravity="center_horizontal"
@@ -60,7 +45,7 @@
             android:singleLine="true" />
 
         <EditText
-            android:layout_width="200dp"
+            android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:id="@+id/emailReg"
             android:layout_gravity="center_horizontal"
@@ -72,27 +57,29 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_horizontal|center_vertical"
+            android:weightSum="1">
 
             <Spinner
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="35dp"
                 android:id="@+id/spinnerCountryCodes"
-                android:entries="@array/country_codes"
-                android:layout_weight="1" />
+                android:entries="@array/country_codes" />
 
             <EditText
-                android:layout_width="200dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/Pnumber"
                 android:layout_gravity="center_horizontal"
                 android:hint="Mobile Number"
                 android:phoneNumber="true"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:layout_weight="0.24" />
         </LinearLayout>
 
         <EditText
-            android:layout_width="200dp"
+            android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:id="@+id/passwordReg"
             android:layout_gravity="center_horizontal"
@@ -101,7 +88,7 @@
             android:password="true"/>
 
         <EditText
-            android:layout_width="200dp"
+            android:layout_width="239dp"
             android:layout_height="wrap_content"
             android:id="@+id/passwordConfirm"
             android:layout_gravity="center_horizontal"

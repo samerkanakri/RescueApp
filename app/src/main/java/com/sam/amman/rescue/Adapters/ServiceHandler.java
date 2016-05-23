@@ -244,7 +244,7 @@ public class ServiceHandler {
      * @param pass
      * @return
      */
-    public String RegisterOnService(String url,String email,String pass){
+    public String RegisterOnService(String url,String email,String pass,String Fname,String Lname,String Phone){
         InputStream inputStream = null;
         String result = "";
         try {
@@ -253,7 +253,7 @@ public class ServiceHandler {
             HttpClient httpclient = new DefaultHttpClient();
 
             // 2. make POST request to the given URL
-            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password="+pass);
+            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password="+pass+"&fname="+Fname+"&lname="+Lname+"&phone="+Phone);
 
             // 7. Set some headers to inform server about the type of the content
             httpPost.setHeader("Accept", "application/json");
