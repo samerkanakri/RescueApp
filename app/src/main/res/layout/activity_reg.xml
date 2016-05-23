@@ -78,6 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
                 android:id="@+id/spinnerCountryCodes"
+                android:entries="@array/country_codes"
                 android:layout_weight="1" />
 
             <EditText

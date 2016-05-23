@@ -1,5 +1,6 @@
 package com.sam.amman.rescue;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -125,11 +126,14 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     class GetJSONData extends AsyncTask<Void,Void,Void> { //on pre  , through , post execute
-
+        ProgressDialog progressDialog;
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
 
+            progressDialog = new ProgressDialog(LoginActivity.this);
+            progressDialog.setMessage("Loading...");
+            progressDialog.show();
             Toast.makeText(getApplication(), "sending " + emailtosend, Toast.LENGTH_SHORT).show();
 
 
@@ -178,7 +182,7 @@ public class LoginActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-
+            progressDialog.dismiss();
 //            e.setText(StrJson);
 //            Toast.makeText(getApplication(),"response",Toast.LENGTH_SHORT).show();
             response = response.trim();

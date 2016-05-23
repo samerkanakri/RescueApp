@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,12 +15,17 @@ import android.widget.Toast;
 import com.sam.amman.rescue.Adapters.CallDoctor_ListFrag;
 import com.sam.amman.rescue.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class CallDoctor extends Fragment {
 
     ListView categoriesLst;
     Button BtnSendSymp;
     View v;
+    public static boolean[] selectedBoxes=new boolean[3];
+    CallDoctor_ListFrag a = new CallDoctor_ListFrag();
     final String[] datasource1={"Swelling and redness of the injured area"
             ,"Pain develops"
             ,"Burned area becomes white on touch"};
@@ -28,16 +34,24 @@ public class CallDoctor extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_call_doctor,container,false);
-
+        a.setDatasource(datasource1);
         v.findViewById(R.id.BtnSendSymp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getActivity(),"Symptoms will be sent", Toast.LENGTH_LONG).show();
+                List<Integer> symptoms=new ArrayList<Integer>();
+                for(int q=0;q<3;q++){
+                    Log.e("CheckCounter",q+"");
+                    if( selectedBoxes[q]){
+                        symptoms.add(q);
+                    }
+                }
+
+                //TODO send symptomsList
             }
         });
 
-        CallDoctor_ListFrag a = new CallDoctor_ListFrag();
-        a.setDatasource(datasource1);
+
         FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
         tr.commit();
 

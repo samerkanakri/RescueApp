@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,9 +27,13 @@ public class Settings extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_settings,container,false);
         rememberme = (Switch) v.findViewById(R.id.remembermeSwitch);
-//        pref = new Preferences(getActivity());
-//        switched = sharedPreferences.getBoolean("checked",false);
-//        rememberme.setChecked(switched);
+
+
+        pref = new Preferences(getActivity());
+        switched = pref.getRemmeber();
+
+        Log.e("checked",switched+"");
+        rememberme.setChecked(switched);
 //        rememberme.setChecked(sharedPreferences.getBoolean("checked",false));
 //        rememberme.setChecked(checkPref());
 

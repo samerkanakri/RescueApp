@@ -27,6 +27,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Doctor_Fragments.ViewCase"></activity>
+        <activity android:name=".Doctor_Fragments.CaseResponde"/>
     </application>
 
 </manifest>

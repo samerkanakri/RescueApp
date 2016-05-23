@@ -51,7 +51,6 @@
                 android:layout_height="wrap_content"
                 android:text="Responde"
                 android:id="@+id/respondeBtnn"
-                android:onClick="respondToCase"
                 android:layout_gravity="center_horizontal" />
 
             <Button

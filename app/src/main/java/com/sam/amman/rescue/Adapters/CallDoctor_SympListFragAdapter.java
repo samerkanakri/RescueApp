@@ -9,6 +9,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.sam.amman.rescue.Normal_Fragments.CallDoctor;
 import com.sam.amman.rescue.R;
 
 import java.util.ArrayList;
@@ -22,13 +23,22 @@ public class CallDoctor_SympListFragAdapter extends BaseAdapter {
     Context c;
     Boolean selected = true;
 
+    Boolean [] selectedBoxes=new Boolean[3];
 
+    public Boolean[] getSelectedBoxes() {
+        return selectedBoxes;
+    }
+
+    public void setSelectedBoxes(Boolean[] selectedBoxes) {
+        this.selectedBoxes = selectedBoxes;
+    }
 
     //constructor
     public CallDoctor_SympListFragAdapter(List<String> stringList, Context c) {
         this.stringList = stringList;
         this.c = c;
     }
+
 
     //add list of items
     public void addAll(String[] items){
@@ -78,13 +88,22 @@ public class CallDoctor_SympListFragAdapter extends BaseAdapter {
         final CheckBox cb = (CheckBox) v.findViewById(R.id.checkBoxS);
         cb.setText(stringList.get(i));
 
+        final ArrayList<Integer> symptoms = new ArrayList<>();
+
         cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                if(b)
-                    Toast.makeText(c,"checked >> " + i ,Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(c,"Unchecked >> " + i ,Toast.LENGTH_SHORT).show();
+                if (b){
+                    Toast.makeText(c, "checked >> " + i, Toast.LENGTH_SHORT).show();
+                    selectedBoxes[i]=true;
+                    CallDoctor.selectedBoxes[i]=true;
+                }else {
+                    Toast.makeText(c, "Unchecked >> " + i, Toast.LENGTH_SHORT).show();
+                    selectedBoxes[i]=false;
+                    CallDoctor.selectedBoxes[i]=false;
+                }
+
+
 
             }
 

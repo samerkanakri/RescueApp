@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.Actors.Case;
@@ -24,7 +25,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class Doctor extends Fragment {
+public class Doctor extends Fragment implements View.OnClickListener {
 
     View v;
     final String url = "http://rescueproject2016.netne.net/myPHP/readCasesAsJSON.php";
@@ -38,11 +39,24 @@ public class Doctor extends Fragment {
         v = inflater.inflate(R.layout.fragment_doctor,container,false);
 
         String datasource1[] = {"Case 1","Case 2","Case 3"};
+        RadioButton radioButton3=(RadioButton) v.findViewById(R.id.radioButton3);
+        RadioButton radioButton2=(RadioButton) v.findViewById(R.id.radioButton2);
+        RadioButton radioButton=(RadioButton) v.findViewById(R.id.radioButton);
+
+        radioButton.setOnClickListener(this);
+        radioButton2.setOnClickListener(this);
+        radioButton3.setOnClickListener(this);
 
         getCases getCases = new getCases();
         getCases.execute();
         return v;
 
+    }
+
+    @Override
+    public void onClick(View view) {
+//        TODO view.getId()
+        // asda
     }
 
     class getCases extends AsyncTask<Void,Void,Void>{

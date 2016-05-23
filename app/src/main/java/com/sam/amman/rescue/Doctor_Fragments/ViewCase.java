@@ -46,7 +46,7 @@ public class ViewCase extends AppCompatActivity {
         respondeBtn = (Button) findViewById(R.id.respondeBtnn);
         rejectBtn = (Button) findViewById(R.id.rejectBtn);
 
-
+        context=this;
         //get CID from prev activity
         Intent i = getIntent();
         cid = i.getIntExtra("CID",-1);
@@ -60,14 +60,19 @@ public class ViewCase extends AppCompatActivity {
             loadCase.execute();
         }
 
-
+        respondeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.e("sending requist "," caseResponde");
+                startActivity(new Intent(context, CaseResponde.class));
+            }
+        });
 
     }
 
     public void respondToCase(View view){
-        Intent intent = new Intent();
-        intent.setClass(context, CaseResponde.class);
-        context.startActivity(intent);
+        Log.e("sending requist "," caseResponde");
+        startActivity(new Intent(context, CaseResponde.class));
     }
 
 
