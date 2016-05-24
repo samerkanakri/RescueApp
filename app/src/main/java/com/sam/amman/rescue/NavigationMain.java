@@ -102,6 +102,7 @@ public class NavigationMain extends AppCompatActivity
     }
 
 
+    Preferences pref ;
     /**
      * customized method to display fragment layouts
      * @param viewId
@@ -111,45 +112,86 @@ public class NavigationMain extends AppCompatActivity
         Fragment fragment = null;
         String title = getString(R.string.app_name);
 
-        switch (viewId) {
-            case R.id.nav_callDoctor:
-                fragment = new CallDoctor();
-                title  = "Call Doctor";
-                viewIsAtHome = true;
+        pref = new Preferences(getApplication());
 
-                break;
-            case R.id.nav_RequestDrone:
-                fragment = new RequestDrone();
-                title = "Drone Request";
-                viewIsAtHome = false;
-                break;
-            case R.id.nav_Profile:
-                fragment = new Profile();
-                title = "Profile";
-                viewIsAtHome = false;
-                break;
-            case R.id.nav_EDoctor:
-                fragment = new EDoctor();
-                title = "E-Doctor";
-                viewIsAtHome = false;
-                break;
-            case R.id.nav_Setting:
-                fragment = new Settings();
-                title = "Settings";
-                viewIsAtHome = false;
-                break;
-            case R.id.nav_Doctor:
-                fragment = new Doctor();
-                title = "Doctor";
-                viewIsAtHome = false;
-                break;
-            case R.id.nav_Logout:
-                Preferences pref = new Preferences(getApplication());
-                pref.setRememberMe(false);
-                Intent intent = new Intent();
-                intent.setClass(getApplication(), LoginActivity.class);
-                startActivity(intent);
-                break;
+        if(pref.getRole().equals("p")){
+            switch (viewId) {
+                case R.id.nav_callDoctor:
+                    fragment = new CallDoctor();
+                    title = "Call Doctor";
+                    viewIsAtHome = true;
+
+                    break;
+                case R.id.nav_RequestDrone:
+                    fragment = new RequestDrone();
+                    title = "Drone Request";
+                    viewIsAtHome = false;
+                    break;
+                case R.id.nav_Profile:
+                    fragment = new Profile();
+                    title = "Profile";
+                    viewIsAtHome = false;
+                    break;
+                case R.id.nav_EDoctor:
+                    fragment = new EDoctor();
+                    title = "E-Doctor";
+                    viewIsAtHome = false;
+                    break;
+                case R.id.nav_Setting:
+                    fragment = new Settings();
+                    title = "Settings";
+                    viewIsAtHome = false;
+                    break;
+                case R.id.nav_Logout:
+                    Preferences pref = new Preferences(getApplication());
+                    pref.setRememberMe(false);
+                    Intent intent = new Intent();
+                    intent.setClass(getApplication(), LoginActivity.class);
+                    startActivity(intent);
+                    break;
+            }
+        }
+        if(pref.getRole().equals("d")) {
+                switch (viewId) {
+                    case R.id.nav_callDoctor:
+                        fragment = new CallDoctor();
+                        title  = "Call Doctor";
+                        viewIsAtHome = true;
+
+                        break;
+                    case R.id.nav_RequestDrone:
+                        fragment = new RequestDrone();
+                        title = "Drone Request";
+                        viewIsAtHome = false;
+                        break;
+                    case R.id.nav_Profile:
+                        fragment = new Profile();
+                        title = "Profile";
+                        viewIsAtHome = false;
+                        break;
+                    case R.id.nav_EDoctor:
+                        fragment = new EDoctor();
+                        title = "E-Doctor";
+                        viewIsAtHome = false;
+                        break;
+                    case R.id.nav_Setting:
+                        fragment = new Settings();
+                        title = "Settings";
+                        viewIsAtHome = false;
+                        break;
+                    case R.id.nav_Doctor:
+                        fragment = new Doctor();
+                        title = "Doctor";
+                        viewIsAtHome = false;
+                        break;
+                    case R.id.nav_Logout:
+                        Preferences pref = new Preferences(getApplication());
+                        pref.setRememberMe(false);
+                        Intent intent = new Intent();
+                        intent.setClass(getApplication(), LoginActivity.class);
+                        startActivity(intent);
+                        break;
+                }
 
 
         }

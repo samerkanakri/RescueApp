@@ -1,5 +1,6 @@
 package com.sam.amman.rescue.Normal_Fragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -13,6 +14,7 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.CallDoctor_ListFrag;
+import com.sam.amman.rescue.Adapters.ServiceHandler;
 import com.sam.amman.rescue.R;
 
 import java.util.ArrayList;
@@ -95,5 +97,15 @@ public class CallDoctor extends Fragment {
 //        });
 
         return v;
+    }
+
+    class createCase extends AsyncTask<Void,Void,Void>{
+        ServiceHandler serviceHandler = new ServiceHandler();
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            return null;
+
+        }
     }
 }

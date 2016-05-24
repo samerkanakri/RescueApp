@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.preference.PreferenceActivity;
+import android.widget.Toast;
 
 import com.sam.amman.rescue.R;
 
@@ -17,6 +18,7 @@ public class Preferences extends PreferenceActivity {
     SharedPreferences.Editor editor;
 
     Context context;
+
 
 
     @Override
@@ -60,6 +62,15 @@ public class Preferences extends PreferenceActivity {
 
     public String getpassword() {
         return sharedPreferences.getString("password", "empty");
+    }
+
+    public void setRole(String r) {
+        editor.putString("role", r);
+        editor.commit();
+    }
+
+    public String getRole() {
+        return sharedPreferences.getString("role", "p");
     }
 
     public void setUID_OfCase(int uid) {

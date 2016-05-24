@@ -23,8 +23,10 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailTxt,passwordTxt;
     CheckBox remembermeChkBx;
     Context  context;
-
+    Preferences pref;
+    String role;
     String url;
+
     ServiceHandler serviceHandler;
     final String TAG_UID = "UID";
     final String TAG_EMAIL = "Email";
@@ -59,7 +61,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 
                 if(b){
-                    Preferences pref = new Preferences(getApplication());
+                    pref = new Preferences(getApplication());
                     pref.setRememberMe(true);
                     Toast.makeText(getApplication(), "preference set", Toast.LENGTH_SHORT).show();
                 }else{
@@ -92,6 +94,8 @@ public class LoginActivity extends AppCompatActivity {
 //            } else {
 //                Toast.makeText(getApplication(), "wrong username or password", Toast.LENGTH_SHORT).show();
 //            }
+
+                ;
 
                 ;
                 GetJSONData jsonData = new GetJSONData();
@@ -132,9 +136,9 @@ public class LoginActivity extends AppCompatActivity {
             super.onPreExecute();
 
             progressDialog = new ProgressDialog(LoginActivity.this);
-            progressDialog.setMessage("Loading...");
+            progressDialog.setMessage("please wait...");
             progressDialog.show();
-            Toast.makeText(getApplication(), "sending " + emailtosend, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplication(), "sending " + emailtosend, Toast.LENGTH_SHORT).show();
 
 
 
@@ -186,8 +190,17 @@ public class LoginActivity extends AppCompatActivity {
 //            e.setText(StrJson);
 //            Toast.makeText(getApplication(),"response",Toast.LENGTH_SHORT).show();
             response = response.trim();
-            Toast.makeText(getApplication(), "recieving "+response,Toast.LENGTH_SHORT).show();
-            if(response.equals("1")){
+            String userCheck = response.substring(0,1);
+            role = response.substring(4,5);
+            String uid = response.substring(2,3);
+            Toast.makeText(getApplication(), "receiving "+userCheck,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplication(), "Role  "+role,Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplication(), "UID  "+uid,Toast.LENGTH_SHORT).show();
+
+            pref = new Preferences(getApplication());
+            pref.setRole(role);
+
+            if(userCheck.equals("1")){
                 gotoMain();
             }else{
                 Toast.makeText(getApplication(), "email does not exist", Toast.LENGTH_SHORT).show();

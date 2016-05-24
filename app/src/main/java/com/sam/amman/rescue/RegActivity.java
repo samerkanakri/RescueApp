@@ -1,5 +1,6 @@
 package com.sam.amman.rescue;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
@@ -145,6 +146,14 @@ public class RegActivity extends AppCompatActivity {
 
     class SendData extends AsyncTask<Void, Void, Void>{
 
+        ProgressDialog progressDialog;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(RegActivity.this);
+            progressDialog.setMessage("please wait...");
+            progressDialog.show();
+        }
 
         @Override
         protected Void doInBackground(Void... voids) {
@@ -170,6 +179,7 @@ public class RegActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
+            progressDialog.dismiss();
             response=response.trim();
             //response = response.substring(0,1);
             Toast.makeText(RegActivity.this, response, Toast.LENGTH_SHORT).show();
