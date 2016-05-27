@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
@@ -28,16 +29,21 @@ import java.util.ArrayList;
 public class Doctor extends Fragment implements View.OnClickListener {
 
     View v;
+    Preferences pref;
     final String url = "http://rescueproject2016.netne.net/myPHP/readCasesAsJSON.php";
     String StrJson;
     ServiceHandler serviceHandler;
     ArrayList<String> usersLst,dataSource;
+    Button refresh;
+    getCases getCases;
+    String status;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_doctor,container,false);
 
+        refresh = (Button) v.findViewById(R.id.refresh);
         String datasource1[] = {"Case 1","Case 2","Case 3"};
         RadioButton radioButton3=(RadioButton) v.findViewById(R.id.radioButton3);
         RadioButton radioButton2=(RadioButton) v.findViewById(R.id.radioButton2);
@@ -47,16 +53,47 @@ public class Doctor extends Fragment implements View.OnClickListener {
         radioButton2.setOnClickListener(this);
         radioButton3.setOnClickListener(this);
 
-        getCases getCases = new getCases();
+        //TODO set checked
+        pref = new Preferences(getActivity());
+        if(pref.getStatus().equals("available")){
+            radioButton.setChecked(true);
+        }
+        if(pref.getStatus().equals("away")){
+            radioButton.setChecked(true);
+        }
+        if(pref.getStatus().equals("off")){
+            radioButton.setChecked(true);
+        }
+
+        refresh.setOnClickListener(this);
+
+        getCases = new getCases();
         getCases.execute();
         return v;
 
+
+
+
     }
+
 
     @Override
     public void onClick(View view) {
-//        TODO view.getId()
-        // asda
+
+        Preferences pref = new Preferences(getActivity());
+        if(view.getId()==R.id.radioButton){
+            pref.setStatus("available");
+        }
+        if(view.getId()==R.id.radioButton2){
+            pref.setStatus("away");
+        }
+        if(view.getId()==R.id.radioButton3){
+            pref.setStatus("off");
+        }
+        if(view.getId()==R.id.refresh){
+            getCases = new getCases();
+            getCases.execute();
+        }
     }
 
     class getCases extends AsyncTask<Void,Void,Void>{
@@ -96,12 +133,18 @@ public class Doctor extends Fragment implements View.OnClickListener {
                         _case.setCID(uid);
                         _case.setTime(c.getString("DateTime"));
                         _case.setLocation(c.getString("Location"));
+                        _case.setSetNew(c.getString("isNew"));
 
-                        usersLst.add(i,_case.toString());
 
-                        //used to load user details
-                        Preferences pref=new Preferences(getActivity());
-                        pref.setUID_OfCase(uid);
+                        pref = new Preferences(getActivity());
+                        if(_case.getSetNew().equals("1")) {
+                            usersLst.add(_case.toString());
+                        }
+
+
+                        // TODO used to load user details
+//                        Preferences pref=new Preferences(getActivity());
+//                        pref.setUID(c.getString("UID"));
 
                         //Toast.makeText(getActivity(),"user id " + (uid),Toast.LENGTH_SHORT).show();
 
@@ -114,11 +157,13 @@ public class Doctor extends Fragment implements View.OnClickListener {
                 Log.e("ServiceHandler", "Couldn't get any data from the url");
             }
 
-            dataSource = usersLst;
-            Doctor_CaseListFrag a = new Doctor_CaseListFrag();
-            a.setDatasource(usersLst);
-            FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.CaseContainer,a);
-            tr.commit();
+            if(pref.getStatus().equals("available")) {
+                dataSource = usersLst;
+                Doctor_CaseListFrag a = new Doctor_CaseListFrag();
+                a.setDatasource(usersLst);
+                FragmentTransaction tr = getChildFragmentManager().beginTransaction().replace(R.id.CaseContainer, a);
+                tr.commit();
+            }
 
 
 

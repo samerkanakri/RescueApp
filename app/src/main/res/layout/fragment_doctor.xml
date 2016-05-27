@@ -17,6 +17,13 @@
         android:weightSum="1"
         android:id="@+id/radioGroup">
 
+        <Button
+            android:layout_width="53dp"
+            android:layout_height="wrap_content"
+            android:text="r"
+            android:id="@+id/refresh"
+            android:layout_gravity="right" />
+
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

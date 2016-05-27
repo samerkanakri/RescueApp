@@ -10,6 +10,7 @@ import java.util.StringTokenizer;
  */
 public class Case {
 
+    private String isNew;
     private int CID;
     private int UID;
     private String time;
@@ -70,5 +71,14 @@ public class Case {
 
     public String toString(){
         return "User : " + getCID() + "\nTime : " + getTime() + "\nLocation : " + getLocation() ;
+    }
+
+    public void setSetNew(String isNew) {
+        this.isNew = isNew;
+    }
+
+
+    public String getSetNew() {
+        return isNew;
     }
 }

@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,19 +13,24 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.CallDoctor_ListFrag;
+import com.sam.amman.rescue.Adapters.Preferences;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
 import com.sam.amman.rescue.R;
-
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class CallDoctor extends Fragment {
 
+    Preferences pref;
     ListView categoriesLst;
     Button BtnSendSymp;
     View v;
-    public static boolean[] selectedBoxes=new boolean[3];
+    final String url = "http://rescueproject2016.netne.net/myPHP/CaseReport.php";
+    String uid,locationStr,symptoms;
+    String response;
+    // arraylist
+    public static String[] symptomsChecked =new String[3];
+
+
     CallDoctor_ListFrag a = new CallDoctor_ListFrag();
     final String[] datasource1={"Swelling and redness of the injured area"
             ,"Pain develops"
@@ -37,19 +41,36 @@ public class CallDoctor extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         v = inflater.inflate(R.layout.fragment_call_doctor,container,false);
         a.setDatasource(datasource1);
+
+
         v.findViewById(R.id.BtnSendSymp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"Symptoms will be sent", Toast.LENGTH_LONG).show();
-                List<Integer> symptoms=new ArrayList<Integer>();
-                for(int q=0;q<3;q++){
-                    Log.e("CheckCounter",q+"");
-                    if( selectedBoxes[q]){
-                        symptoms.add(q);
+//                Toast.makeText(getActivity(),"Symptoms will be sent", Toast.LENGTH_LONG).show();
+//                List<Integer> symptoms=new ArrayList<Integer>();
+//                for(int q=0;q<3;q++){
+//                    Log.e("CheckCounter",q+"");
+//                    if( symptomsChecked[q]){
+//                        symptoms.add(q);
+//                    }
+//                }
+                symptoms="";
+
+                for(int i = 0 ; i < symptomsChecked.length ; i++){
+                    symptoms = symptoms + symptomsChecked[i];
+                }
+
+                //temp
+                for(int i = 0 ; i < symptoms.length() ; i++){
+                    if(symptoms.charAt(i)==' '){
+                        symptoms=symptoms.replace(symptoms.charAt(i),',');
                     }
                 }
 
-                //TODO send symptomsList
+                CreateCase casee = new CreateCase();
+                casee.execute();
+
+
             }
         });
 
@@ -99,13 +120,51 @@ public class CallDoctor extends Fragment {
         return v;
     }
 
-    class createCase extends AsyncTask<Void,Void,Void>{
+    class CreateCase extends AsyncTask<Void,Void,Void>{
         ServiceHandler serviceHandler = new ServiceHandler();
 
         @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+
+
+            pref = new Preferences(getActivity());
+            uid = pref.getUID();
+            //TODO not working getUID
+//            uid = "22";
+//            locationStr = pref.getLocation();
+            locationStr = "99.000000,99.000000";
+//            Toast.makeText(getActivity(),locationStr,Toast.LENGTH_SHORT).show();
+
+            //TODO fill symptoms string
+//            for(int i = 0 ; i < symptomsChecked.length ; i++){
+//                symptoms = symptoms + symptomsChecked[i];
+//            }
+//            symptoms="test from android";
+
+
+        }
+
+        @Override
         protected Void doInBackground(Void... voids) {
+
+
+            response = serviceHandler.createCase(url,uid,locationStr,symptoms);
+
             return null;
 
         }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+            response=response.trim();
+            if(response.equals("1"))
+                Toast.makeText(getActivity(),"sent successfully",Toast.LENGTH_SHORT).show();
+
+        }
     }
+
+
+
 }

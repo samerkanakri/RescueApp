@@ -1,8 +1,13 @@
 package com.sam.amman.rescue;
 
+import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,13 +31,11 @@ public class LoginActivity extends AppCompatActivity {
     Preferences pref;
     String role;
     String url;
+    String uid;
 
-    ServiceHandler serviceHandler;
-    final String TAG_UID = "UID";
-    final String TAG_EMAIL = "Email";
-    final String TAG_PASSWORD = "Password";
-    final String TAG_FNAME = "Fname";
+
     String emailtosend , passwordtosend;
+    String LocationStr;
     String response;
     public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
             "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -192,15 +195,18 @@ public class LoginActivity extends AppCompatActivity {
             response = response.trim();
             String userCheck = response.substring(0,1);
             role = response.substring(4,5);
-            String uid = response.substring(2,3);
-            Toast.makeText(getApplication(), "receiving "+userCheck,Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplication(), "Role  "+role,Toast.LENGTH_SHORT).show();
+
+            uid = response.substring(2,3);
+//            Toast.makeText(getApplication(), "receiving "+userCheck,Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplication(), "Role  "+role,Toast.LENGTH_SHORT).show();
             Toast.makeText(getApplication(), "UID  "+uid,Toast.LENGTH_SHORT).show();
 
             pref = new Preferences(getApplication());
             pref.setRole(role);
-
+            pref.setUID(uid);
+//            Toast.makeText(getApplication(), "user check " + userCheck, Toast.LENGTH_SHORT).show();
             if(userCheck.equals("1")){
+
                 gotoMain();
             }else{
                 Toast.makeText(getApplication(), "email does not exist", Toast.LENGTH_SHORT).show();
@@ -249,4 +255,6 @@ public class LoginActivity extends AppCompatActivity {
         intent.setClass(getApplication(), NavigationMain.class);
         startActivity(intent);
     }
+
+
 }

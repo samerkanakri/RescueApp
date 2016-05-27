@@ -3,7 +3,6 @@ package com.sam.amman.rescue.Doctor_Fragments;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -12,35 +11,27 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sam.amman.rescue.Actors.User;
-import com.sam.amman.rescue.Adapters.Doctor_CaseListFrag;
-import com.sam.amman.rescue.Adapters.Preferences;
 import com.sam.amman.rescue.Adapters.ServiceHandler;
-import com.sam.amman.rescue.NavigationMain;
 import com.sam.amman.rescue.R;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class ViewCase extends AppCompatActivity {
 
     View v;
-    final String url = "http://rescueproject2016.netne.net/myPHP/readDataAsJSON.php";
-    String StrJson;
+    final String url = "http://rescueproject2016.netne.net/myPHP/getSymptoms.php";
+    String response;
     ServiceHandler serviceHandler;
     ArrayList<String> usersLst;
     int cid;
-    TextView name ;
+    TextView symptoms;
     Button respondeBtn , rejectBtn ;
     Context context;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragment_view_case);
-        name = (TextView) findViewById(R.id.namettt);
+        symptoms = (TextView) findViewById(R.id.namettt);
 
 
         respondeBtn = (Button) findViewById(R.id.respondeBtnn);
@@ -56,7 +47,6 @@ public class ViewCase extends AppCompatActivity {
         if(cid<1){
             this.finish();
         }else{
-            Toast.makeText(this,"Case " + cid + " is loading",Toast.LENGTH_SHORT).show();
             loadCase.execute();
         }
 
@@ -87,7 +77,7 @@ public class ViewCase extends AppCompatActivity {
         protected Void doInBackground(Void... voids) {
 
             serviceHandler = new ServiceHandler();
-            StrJson = serviceHandler.makeServiceCall(url,1);
+            response = serviceHandler.getSymptoms(url,(cid+""));
 
             return null;
         }
@@ -95,46 +85,46 @@ public class ViewCase extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
-            User user = new User();
-
-            if (StrJson != null) {
-                try {
-                    JSONObject jsonObj = new JSONObject(StrJson);
-                    JSONArray jsonArray ;
-
+//            User user = new User();
 //
-                    // Getting JSON Array node
-                    jsonArray = jsonObj.getJSONArray("data");
+//            if (response != null) {
+//                try {
+//                    JSONObject jsonObj = new JSONObject(response);
+//                    JSONArray jsonArray ;
+//
+////
+//                    // Getting JSON Array node
+//                    jsonArray = jsonObj.getJSONArray("data");
+//
+//
+////                    ArrayList<User> usersLst = new ArrayList<User>();
+//                    usersLst = new ArrayList<>();
+//
+//
+//                    // looping through All Contacts
+//                    for (int i = 0; i < jsonArray.length(); i++) {
+//                        JSONObject c = jsonArray.getJSONObject(i);
+//
+//                        String StrCid = cid+"";
+//                        if(StrCid.equals(c.getString("UID").trim())){
+//                            Toast.makeText(getApplication(),"found",Toast.LENGTH_SHORT).show();
+//                            user.setEmail(c.getString("Email"));
+//                            user.setPassword(c.getString("Password"));
+//                            break;
+//                        }
+//
+//
+//                    }
+//                } catch (JSONException e) {
+//                    e.printStackTrace();
+//                }
+//            } else {
+//                Log.e("ServiceHandler", "Couldn't get any data from the url");
+//            }
 
+            response=response.trim();
+            symptoms.setText(response.toString());
 
-//                    ArrayList<User> usersLst = new ArrayList<User>();
-                    usersLst = new ArrayList<>();
-
-
-                    // looping through All Contacts
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject c = jsonArray.getJSONObject(i);
-
-                        String StrCid = cid+"";
-                        if(StrCid.equals(c.getString("UID").trim())){
-                            Toast.makeText(getApplication(),"found",Toast.LENGTH_SHORT).show();
-                            user.setEmail(c.getString("Email"));
-                            user.setPassword(c.getString("Password"));
-                            break;
-                        }
-
-
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                Log.e("ServiceHandler", "Couldn't get any data from the url");
-            }
-
-            name.setText(user.getEmail());
-
-            //DISPLAY YOU INFO
 
 
 

@@ -11,6 +11,7 @@ public class User {
     int UID;
     private String Username, FirstName, LastName, Password, Email, Phone, Address, Blood, Sex;
     private Date DoB ;
+    String status;
 
     /**
      * REGISTRATION TEST CONSTRUCTOR
@@ -146,6 +147,14 @@ public class User {
 
     public int getUID() {
         return UID;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getStatus() {
+        return status;
     }
 
     public String toString(){

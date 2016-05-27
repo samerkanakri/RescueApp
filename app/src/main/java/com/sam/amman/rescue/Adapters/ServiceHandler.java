@@ -98,8 +98,61 @@ public class ServiceHandler {
 
     }
 
+    public String UpdateService(String url,String email,String fname){
+        InputStream inputStream = null;
+        String result = "";
+        try {
 
-    public String POSTJSON(String url,String email,String pass){
+            HttpClient httpclient = new DefaultHttpClient();
+
+            HttpPost httpPost = new HttpPost(url+"?email="+email+"&fname="+fname);
+
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Content-type", "application/json");
+
+            HttpResponse httpResponse = httpclient.execute(httpPost);
+
+            if(httpResponse != null)
+                result = EntityUtils.toString(httpResponse.getEntity());
+            else
+                result = "Did not work!";
+
+        } catch (Exception e) {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        // 11. return result
+        return result;
+    }
+
+    public String createCase(String url,String uid,String location,String symptomsStr){
+        InputStream inputStream = null;
+        String result = "";
+        try {
+
+            HttpClient httpclient = new DefaultHttpClient();
+
+            HttpPost httpPost = new HttpPost(url+"?uid="+uid+"&location="+location+"&symptomsStr="+symptomsStr);
+
+            httpPost.setHeader("Accept", "application/json");
+            httpPost.setHeader("Content-type", "application/json");
+
+            HttpResponse httpResponse = httpclient.execute(httpPost);
+
+            if(httpResponse != null)
+                result = EntityUtils.toString(httpResponse.getEntity());
+            else
+                result = "Did not work!";
+
+        } catch (Exception e) {
+            Log.d("InputStream", e.getLocalizedMessage());
+        }
+
+        // 11. return result
+        return result;
+    }
+
+    public String getSymptoms(String url,String cid){
         InputStream inputStream = null;
         String result = "";
         try {
@@ -108,7 +161,7 @@ public class ServiceHandler {
             HttpClient httpclient = new DefaultHttpClient();
 
             // 2. make POST request to the given URL
-            HttpPost httpPost = new HttpPost(url+"?email="+email+"&password="+pass);
+            HttpPost httpPost = new HttpPost(url+"?cid="+cid);
 
 //            String json = "";
 
@@ -131,13 +184,13 @@ public class ServiceHandler {
 //            httpPost.setEntity(se);
 
             // 7. Set some headers to inform server about the type of the content
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-type", "application/json");
+//            httpPost.setHeader("Accept", "application/json");
+//            httpPost.setHeader("Content-type", "application/json");
 
             // 8. Execute POST request to the given URL
             HttpResponse httpResponse = httpclient.execute(httpPost);
 
-            // 9. receive response as inputStream
+//             9. receive response as inputStream
 //            inputStream = httpResponse.getEntity().getContent();
 
             // 10. convert inputstream to string
@@ -196,34 +249,6 @@ public class ServiceHandler {
 //            inputStream = httpResponse.getEntity().getContent();
 
             // 10. convert inputstream to string
-            if(httpResponse != null)
-                result = EntityUtils.toString(httpResponse.getEntity());
-            else
-                result = "Did not work!";
-
-        } catch (Exception e) {
-            Log.d("InputStream", e.getLocalizedMessage());
-        }
-
-        // 11. return result
-        return result;
-    }
-
-
-    public String UpdateService(String url,String email,String fname){
-        InputStream inputStream = null;
-        String result = "";
-        try {
-
-            HttpClient httpclient = new DefaultHttpClient();
-
-            HttpPost httpPost = new HttpPost(url+"?email="+email+"&fname="+fname);
-
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-type", "application/json");
-
-            HttpResponse httpResponse = httpclient.execute(httpPost);
-
             if(httpResponse != null)
                 result = EntityUtils.toString(httpResponse.getEntity());
             else

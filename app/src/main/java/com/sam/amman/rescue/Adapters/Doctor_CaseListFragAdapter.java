@@ -83,14 +83,10 @@ public class Doctor_CaseListFragAdapter extends BaseAdapter {
             public void onClick(View view) {
                 Toast.makeText(c,"I am a case item " + (i+1),Toast.LENGTH_SHORT).show();
 
-                Preferences pref = new Preferences(c);
-                int uid = pref.getUID_OfCase();
-                Toast.makeText(c,"user id " + (uid),Toast.LENGTH_SHORT).show();
-
 
                 Intent intent = new Intent();
                 intent.setClass(c, ViewCase.class);
-                intent.putExtra("CID",(uid));
+                intent.putExtra("CID",(i+1));
                 c.startActivity(intent);
             }
         });

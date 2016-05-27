@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
 
 import com.sam.amman.rescue.Normal_Fragments.CallDoctor;
 import com.sam.amman.rescue.R;
@@ -23,15 +22,8 @@ public class CallDoctor_SympListFragAdapter extends BaseAdapter {
     Context c;
     Boolean selected = true;
 
-    Boolean [] selectedBoxes=new Boolean[3];
 
-    public Boolean[] getSelectedBoxes() {
-        return selectedBoxes;
-    }
 
-    public void setSelectedBoxes(Boolean[] selectedBoxes) {
-        this.selectedBoxes = selectedBoxes;
-    }
 
     //constructor
     public CallDoctor_SympListFragAdapter(List<String> stringList, Context c) {
@@ -94,13 +86,13 @@ public class CallDoctor_SympListFragAdapter extends BaseAdapter {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if (b){
-                    Toast.makeText(c, "checked >> " + i, Toast.LENGTH_SHORT).show();
-                    selectedBoxes[i]=true;
-                    CallDoctor.selectedBoxes[i]=true;
+                    //Toast.makeText(c, "checked >> " + i, Toast.LENGTH_SHORT).show();
+
+                    CallDoctor.symptomsChecked[i]=cb.getText().toString();
                 }else {
-                    Toast.makeText(c, "Unchecked >> " + i, Toast.LENGTH_SHORT).show();
-                    selectedBoxes[i]=false;
-                    CallDoctor.selectedBoxes[i]=false;
+                    //Toast.makeText(c, "unchecked >> " + i, Toast.LENGTH_SHORT).show();
+
+                    CallDoctor.symptomsChecked[i] = "";
                 }
 
 

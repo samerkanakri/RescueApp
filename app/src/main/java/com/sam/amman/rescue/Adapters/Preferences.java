@@ -55,13 +55,22 @@ public class Preferences extends PreferenceActivity {
         return sharedPreferences.getString("email", "empty");
     }
 
-    public void setpassword(String p) {
-        editor.putString("password", p);
+    public void setUID(String i) {
+        editor.putString("uid", i);
         editor.commit();
     }
 
-    public String getpassword() {
-        return sharedPreferences.getString("password", "empty");
+    public String getUID() {
+        return sharedPreferences.getString("uid", "");
+    }
+
+    public void setLocation(String l) {
+        editor.putString("location", l);
+        editor.commit();
+    }
+
+    public String getLocation() {
+        return sharedPreferences.getString("location", "000");
     }
 
     public void setRole(String r) {
@@ -73,13 +82,13 @@ public class Preferences extends PreferenceActivity {
         return sharedPreferences.getString("role", "p");
     }
 
-    public void setUID_OfCase(int uid) {
-        editor.putInt("UID_OfCase", uid);
+    public void setStatus(String s) {
+        editor.putString("status", s);
         editor.commit();
     }
 
-    public int getUID_OfCase() {
-        return sharedPreferences.getInt("UID_OfCase", -1);
+    public String getStatus() {
+        return sharedPreferences.getString("status", "off");
     }
 
 }
