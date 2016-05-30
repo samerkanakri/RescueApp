@@ -12,7 +12,11 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.sam.amman.rescue.Adapters.CallDoctor_ListFrag;
+import com.sam.amman.rescue.Adapters.Doctor_CaseListFrag;
+import com.sam.amman.rescue.Normal_Fragments.CallDoctor;
 import com.sam.amman.rescue.R;
+
+import java.util.ArrayList;
 
 public class CaseResponde extends AppCompatActivity {
 
@@ -30,9 +34,12 @@ public class CaseResponde extends AppCompatActivity {
         BtnResponde = (Button) findViewById(R.id.BtnResponde);
         cancelBtn = (Button) findViewById(R.id.CancelCaseBtn);
 
-        final String[] datasource1={"Do this"
-                ,"Do that"
-                ,"Don't do this"};
+        final ArrayList<String> datasource1= new ArrayList<String>();
+        datasource1.add("Do this");
+        datasource1.add("Do that");
+        datasource1.add("Don't do this");
+
+        String [] datasource = {"Do this","Do that","Don't do this"};
 
         BtnResponde.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,10 +55,10 @@ public class CaseResponde extends AppCompatActivity {
             }
         });
 
-//        CallDoctor_ListFrag a = new CallDoctor_ListFrag();
-//        a.setDatasource(datasource1);
-//        FragmentTransaction tr = getSupportFragmentManager().beginTransaction().replace(R.id.sympListFrame,a);
-//        tr.commit();
+        CallDoctor_ListFrag a = new CallDoctor_ListFrag();
+        a.setDatasource(datasource);
+        FragmentTransaction tr = getSupportFragmentManager().beginTransaction().replace(R.id.DiagnosesListFrame,a);
+        tr.commit();
     }
 
 
